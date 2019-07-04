@@ -7,10 +7,11 @@
 僕もそう思う  
 どこかにまとめてあると便利なときがあるんですよ
 
-[1](https://github.com/wcaokaze/environment/blob/master/a.jpg)  
-[2](https://github.com/wcaokaze/environment/blob/master/b.jpg)  
-[3](https://github.com/wcaokaze/environment/blob/master/c.jpg)  
-[4](https://github.com/wcaokaze/environment/blob/master/d.jpg)  
+![0](https://github.com/wcaokaze/environment/blob/master/a.jpg)
+
+[1](https://github.com/wcaokaze/environment/blob/master/b.jpg)  
+[2](https://github.com/wcaokaze/environment/blob/master/c.jpg)  
+[3](https://github.com/wcaokaze/environment/blob/master/d.jpg)  
 
 
 - ケース
