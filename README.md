@@ -31,3 +31,11 @@
 | スピーカー           | [SONY SRS-ZR7](https://www.sony.jp/active-speaker/products/SRS-ZR7/)                                                                                                                                                                  |
 | ヘッドホン           | [SONY WH-1000XM3](https://www.sony.jp/headphone/products/WH-1000XM3/)                                                                                                                                                                 |
 | ペンタブ             | [Wacom Intuos](https://www.wacom.com/ja-jp/products/pen-tablets/wacom-intuos)                                                                                                                                                         |
+
+|                  |                                                     |
+|------------------|-----------------------------------------------------|
+| OS               | [Ubuntu](https://ubuntu.com/) 16.04 LTS             |
+| 端末エミュレータ | [Terminator](https://gnometerminator.blogspot.com/) |
+| シェル           | [zsh](http://www.zsh.org/)                          |
+| テキストエディタ | [Vim](https://www.vim.org/)                         |
+| フォント         | [Cica](https://github.com/miiton/Cica)              |
