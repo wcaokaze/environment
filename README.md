@@ -51,10 +51,10 @@
 | テキストエディタ | [Vim](https://www.vim.org/)                         |
 | フォント         | [Cica](https://github.com/miiton/Cica)              |
 
-|                                |                                                                                                        |
-|--------------------------------|--------------------------------------------------------------------------------------------------------|
-| メイン端末                     | [Xperia Z5 Premium](https://www.sonymobile.co.jp/xperia/docomo/so-03h/) (Cyanogen Mod 13.0 unofficial) |
-| サブ端末                       | [Xperia feat. HATSUNE MIKU SO-04E](https://www.nttdocomo.co.jp/support/utilization/product/so04emiku/) |
-| デバッグ用端末                 | [Nexus 9](https://www.htc.com/jp/tablets/nexus-9/)                                                     |
-| 写真の左端に写ってるデカいやつ | [Galaxy View](https://www.galaxymobile.jp/business/galaxy-view/)                                       |
+|                                |                                                                                                                        |
+|--------------------------------|------------------------------------------------------------------------------------------------------------------------|
+| メイン端末                     | [Xperia Z5 Premium](https://www.sonymobile.co.jp/xperia/docomo/so-03h/) (Cyanogen Mod 13.0 unofficial)                 |
+| サブ端末                       | [Xperia feat. HATSUNE MIKU SO-04E](https://www.nttdocomo.co.jp/support/utilization/product/so04emiku/) (Android 4.2.2) |
+| デバッグ用端末                 | [Nexus 9](https://www.htc.com/jp/tablets/nexus-9/) (Android 7.1.1)                                                     |
+| 写真の左端に写ってるデカいやつ | [Galaxy View](https://www.galaxymobile.jp/business/galaxy-view/) (Android 5.1.1)                                            |
 
