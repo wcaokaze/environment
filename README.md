@@ -41,6 +41,7 @@
 | チェア               | [オカムラ スラート](http://www.okamura.co.jp/product/seating/sulato/)ローバック 黒      |
 | モニタースタンド     | [サンワサプライ MR-LC304BK](https://www.sanwa.co.jp/product/syohin.asp?code=MR-LC304BK) |
 | キーボードスライダー | [サンワサプライ MR-LCST](https://www.sanwa.co.jp/product/syohin.asp?code=MR-LCST)       |
+| 充電器               | [Anker PowerPort Speed 5](https://www.ankerjapan.com/item/A2054.html)                   |
 
 |                  |                                                     |
 |------------------|-----------------------------------------------------|
