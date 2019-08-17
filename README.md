@@ -33,7 +33,7 @@
 | トラックボール | [Logicool MX ERGO](https://www.logicool.co.jp/ja-jp/product/mx-ergo-wireless-trackball-mouse)                             |
 | スピーカー     | [SONY SRS-ZR7](https://www.sony.jp/active-speaker/products/SRS-ZR7/)                                                      |
 | ヘッドホン     | [SONY WH-1000XM3](https://www.sony.jp/headphone/products/WH-1000XM3/)                                                     |
-| ペンタブ       | [Wacom Intuos](https://www.wacom.com/ja-jp/products/pen-tablets/wacom-intuos)                                             |
+| ペンタブ       | [Wacom Intuos Comic M](https://www.wacom.com/ja/products/intuos-comic)                                                                                                  |
 
 |                      |                                                                                         |
 |----------------------|-----------------------------------------------------------------------------------------|
