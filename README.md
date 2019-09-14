@@ -14,6 +14,7 @@
 [3](https://github.com/wcaokaze/environment/blob/master/3.jpg)  
 [4](https://github.com/wcaokaze/environment/blob/master/4.jpg)  
 [5](https://github.com/wcaokaze/environment/blob/master/5.jpg)  
+[6](https://github.com/wcaokaze/environment/blob/master/6.jpg)  
 
 
 |              |                                                                                                                                                                                                                                       |
@@ -33,7 +34,7 @@
 | トラックボール | [Logicool MX ERGO](https://www.logicool.co.jp/ja-jp/product/mx-ergo-wireless-trackball-mouse)                             |
 | スピーカー     | [SONY SRS-ZR7](https://www.sony.jp/active-speaker/products/SRS-ZR7/)                                                      |
 | ヘッドホン     | [SONY WH-1000XM3](https://www.sony.jp/headphone/products/WH-1000XM3/)                                                     |
-| ペンタブ       | [Wacom Intuos Comic M](https://www.wacom.com/ja/products/intuos-comic)                                                                                                  |
+| ペンタブ       | [Wacom Intuos Comic M](https://www.wacom.com/ja/products/intuos-comic)                                                    |
 
 |                      |                                                                                         |
 |----------------------|-----------------------------------------------------------------------------------------|
@@ -42,6 +43,12 @@
 | モニタースタンド     | [サンワサプライ MR-LC304BK](https://www.sanwa.co.jp/product/syohin.asp?code=MR-LC304BK) |
 | キーボードスライダー | [サンワサプライ MR-LCST](https://www.sanwa.co.jp/product/syohin.asp?code=MR-LCST)       |
 | 充電器               | [Anker PowerPort Speed 5](https://www.ankerjapan.com/item/A2054.html)                   |
+
+|                |                    |                                             |
+|----------------|--------------------|---------------------------------------------|
+| モニタ(左)     | iiyama B2280HS-B1  | 21.5インチ、1920x1080、ノングレア、ピボット |
+| モニタ(真ん中) | acer KG271Ubmiippx | 27インチ、2560x1440、ノングレア             |
+| モニタ(右)     | acer H236HL bmd    | 23インチ、1920x1080、グレア                 |
 
 |                  |                                                     |
 |------------------|-----------------------------------------------------|
