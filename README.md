@@ -65,3 +65,11 @@
 | デバッグ用端末                 | [Nexus 9](https://www.htc.com/jp/tablets/nexus-9/)                                                     | Android 7.1.1                 |
 | 写真の左端に写ってるデカいやつ | [Galaxy View](https://www.galaxymobile.jp/business/galaxy-view/)                                       | Android 5.1.1                 |
 
+| Macbook    |                                             |
+|------------|---------------------------------------------|
+| Macbook    | Air 11-inch Early 2015                      |
+| OS         | OS X El Capitan (10.11.4), Ubuntu 16.04 LTS |
+| CPU        | 2.2 GHz Core i7                             |
+| メモリ     | 8GB                                         |
+| キーボード | US (キー配列はDvorak)                       |
+
