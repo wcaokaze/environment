@@ -51,13 +51,14 @@
 | モニタ(真ん中) | acer KG271Ubmiippx | 27インチ、2560x1440、ノングレア             |
 | モニタ(右)     | acer H236HL bmd    | 23インチ、1920x1080、グレア                 |
 
-|                  |                                                     |
-|------------------|-----------------------------------------------------|
-| OS               | [Ubuntu](https://ubuntu.com/) 16.04 LTS             |
-| 端末エミュレータ | [Terminator](https://gnometerminator.blogspot.com/) |
-| シェル           | [zsh](http://www.zsh.org/)                          |
-| テキストエディタ | [Vim](https://www.vim.org/)                         |
-| フォント         | [Cica](https://github.com/miiton/Cica)              |
+|                  |                                                                                                                                                                                                                                                                                                                  |
+|------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| OS               | [Ubuntu](https://ubuntu.com/) 16.04 LTS                                                                                                                                                                                                                                                                          |
+| ブラウザ         | [Chrome](https://www.google.com/intl/ja/chrome/) + [CrxMouse](https://crxmouse.com/)                                                                                                                                                                                                                             |
+| 端末エミュレータ | [Terminator](https://gnometerminator.blogspot.com/)                                                                                                                                                                                                                                                              |
+| シェル           | [zsh](http://www.zsh.org/) + [Prezto](https://github.com/sorin-ionescu/prezto) + [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions)                                                                                                                                                         |
+| テキストエディタ | [Vim](https://www.vim.org/) + [NERDTree](https://github.com/scrooloose/nerdtree) + [lightline](https://github.com/itchyny/lightline.vim) + [gitgutter](https://github.com/airblade/vim-gitgutter) + [fugitive](https://github.com/tpope/vim-fugitive) + [neocomplete](https://github.com/Shougo/neocomplete.vim) |
+| フォント         | [Cica](https://github.com/miiton/Cica)                                                                                                                                                                                                                                                                           |
 
 |                                |                                                                                                        |                               |
 |--------------------------------|--------------------------------------------------------------------------------------------------------|-------------------------------|
