@@ -29,13 +29,14 @@
 | SSD          | Samsung NVMe SSD 950 PRO MZ-V5P256B/IT                                                                                                                                                                                                |
 | 電源         | [CORSAIR SF600](https://www.corsair.com/ja/ja/%E3%82%AB%E3%83%86%E3%82%B4%E3%83%AA%E3%83%BC/%E8%A3%BD%E5%93%81/%E9%9B%BB%E6%BA%90%E3%83%A6%E3%83%8B%E3%83%83%E3%83%88/SF-Series%E2%84%A2-80-PLUS-Gold-Power-Supplies/p/CP-9020105-JP) |
 
-|                |                                                                                                                                                                                             |
-|----------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| キーボード     | [Happy Hacking Keyboard Professional BT 英語配列無刻印(墨)](https://www.pfu.fujitsu.com/hhkeyboard/lineup/pdkb600bn.html) (キー配列は[Dvorak](https://github.com/wcaokaze/wcaokaze-dvorak)) |
-| トラックボール | [Logicool MX ERGO](https://www.logicool.co.jp/ja-jp/product/mx-ergo-wireless-trackball-mouse)                                                                                               |
-| スピーカー     | [SONY SRS-ZR7](https://www.sony.jp/active-speaker/products/SRS-ZR7/)                                                                                                                        |
-| ヘッドホン     | [SONY WH-1000XM3](https://www.sony.jp/headphone/products/WH-1000XM3/)                                                                                                                       |
-| ペンタブ       | [Wacom Intuos Comic M](https://www.wacom.com/ja-jp/products/pen-tablets/intuos-comic-m)                                                                                                     |
+|                |                                                                                                                           |
+|----------------|---------------------------------------------------------------------------------------------------------------------------|
+| キーボード     | [Happy Hacking Keyboard Professional BT 英語配列無刻印(墨)](https://www.pfu.fujitsu.com/hhkeyboard/lineup/pdkb600bn.html) |
+| キーボード     | [Claw44](https://blog.yfuku.com/entry/claw44) ([キー配列](https://github.com/wcaokaze/wcaokaze-dvorak))                   |
+| トラックボール | [Logicool MX ERGO](https://www.logicool.co.jp/ja-jp/product/mx-ergo-wireless-trackball-mouse)                             |
+| スピーカー     | [SONY SRS-ZR7](https://www.sony.jp/active-speaker/products/SRS-ZR7/)                                                      |
+| ヘッドホン     | [SONY WH-1000XM3](https://www.sony.jp/headphone/products/WH-1000XM3/)                                                     |
+| ペンタブ       | [Wacom Intuos Comic M](https://www.wacom.com/ja-jp/products/pen-tablets/intuos-comic-m)                                   |
 
 |                      |                                                                                         |
 |----------------------|-----------------------------------------------------------------------------------------|
