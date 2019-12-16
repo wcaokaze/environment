@@ -38,13 +38,13 @@
 | ヘッドホン     | [SONY WH-1000XM3](https://www.sony.jp/headphone/products/WH-1000XM3/)                                                     |
 | ペンタブ       | [Wacom Intuos Comic M](https://www.wacom.com/ja-jp/products/pen-tablets/intuos-comic-m)                                   |
 
-|                      |                                                                                         |
-|----------------------|-----------------------------------------------------------------------------------------|
-| デスク               | [ディノスのやつ](https://www.dinos.co.jp/p/1300400638/) 180cm × 80cm                    |
-| チェア               | [オカムラ スラート](http://www.okamura.co.jp/product/seating/sulato/)ローバック 黒      |
-| モニタースタンド     | [サンワサプライ MR-LC304BK](https://www.sanwa.co.jp/product/syohin.asp?code=MR-LC304BK) |
-| キーボードスライダー | [サンワサプライ MR-LCST](https://www.sanwa.co.jp/product/syohin.asp?code=MR-LCST)       |
-| 充電器               | [Anker PowerPort Speed 5](https://www.ankerjapan.com/item/A2054.html)                   |
+|                      |                                                                                                                       |
+|----------------------|-----------------------------------------------------------------------------------------------------------------------|
+| デスク               | [ディノスのやつ](https://www.dinos.co.jp/p/1300400638/) 180cm × 80cm                                                  |
+| チェア               | [オカムラ サブリナ(スマートオペレーション)](http://www.okamura.co.jp/product/seating/sabrina/)エクストラハイバック 黒 |
+| モニタースタンド     | [サンワサプライ MR-LC304BK](https://www.sanwa.co.jp/product/syohin.asp?code=MR-LC304BK)                               |
+| キーボードスライダー | [サンワサプライ MR-LCST](https://www.sanwa.co.jp/product/syohin.asp?code=MR-LCST)                                     |
+| 充電器               | [Anker PowerPort Speed 5](https://www.ankerjapan.com/item/A2054.html)                                                 |
 
 |                |                    |                                                  |
 |----------------|--------------------|--------------------------------------------------|
