@@ -49,7 +49,7 @@
 
 |                      |                                                                                                                                                                                |
 |----------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 基盤                 | Choco60                                                                                                                                                                        |
+| 基盤                 | [Choco60](https://keys.recompile.net/projects/choco60/)                                                                                                                        |
 | キースイッチ(上図白) | [Zeal PC Zilent 62g](https://zealpc.net/collections/switches/products/zilents)                                                                                                 |
 | キースイッチ(上図青) | [Zeal PC Zilent 67g](https://zealpc.net/collections/switches/products/zilents)                                                                                                 |
 | キースイッチ(上図赤) | [NoverKeys BOX Royal](https://novelkeys.xyz/products/novelkeys-box-royal-switches)に[Kailh BOX Red](http://www.kailh.com/en/Products/Ks/BOXS/317.html)のスプリングを入れたもの |
