@@ -36,26 +36,11 @@
 
 |                |                                                                                               |
 |----------------|-----------------------------------------------------------------------------------------------|
-| キーボード     | 下に別途記載                                                                                  |
+| キーボード     | [キーボード](keyboard.md)参照                                                                     |
 | トラックボール | [Logicool MX ERGO](https://www.logicool.co.jp/ja-jp/product/mx-ergo-wireless-trackball-mouse) |
 | スピーカー     | [SONY SRS-ZR7](https://www.sony.jp/active-speaker/products/SRS-ZR7/)                          |
 | ヘッドホン     | [SONY WH-1000XM3](https://www.sony.jp/headphone/products/WH-1000XM3/)                         |
 | ペンタブ       | [Wacom Intuos Comic M](https://www.wacom.com/ja-jp/products/pen-tablets/intuos-comic-m)       |
-
-
-### キーボード
-
-![Choco60](https://raw.githubusercontent.com/wcaokaze/environment/master/imgs/choco60.png)
-
-|                      |                                                                                                                                                                                |
-|----------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 基盤                 | [Choco60](https://keys.recompile.net/projects/choco60/)                                                                                                                        |
-| キースイッチ(上図白) | [Zeal PC Zilent 62g](https://zealpc.net/collections/switches/products/zilents)                                                                                                 |
-| キースイッチ(上図青) | [Zeal PC Zilent 67g](https://zealpc.net/collections/switches/products/zilents)                                                                                                 |
-| キースイッチ(上図赤) | [NoverKeys BOX Royal](https://novelkeys.xyz/products/novelkeys-box-royal-switches)に[Kailh BOX Red](http://www.kailh.com/en/Products/Ks/BOXS/317.html)のスプリングを入れたもの |
-| 潤滑剤               | [Tribosys 3204](https://switchmod.net/products/tribosys-3204)                                                                                                                  |
-| キーキャップ         | [jaco氏 ロープロファイルSA風キーキャップ](https://make.dmm.com/item/945377/)                                                                                                   |
-| キー配列             | [wcaokaze-dvorak](https://github.com/wcaokaze/wcaokaze-dvorak)                                                                                                                 |
 
 
 ### モニタ
