@@ -14,7 +14,7 @@
 
 - 下記以外
 
-    [Gateron Ink Silent Black](http://www.gateron.com/supply/218.html)
+    [Gateron Ink Silent Black](http://www.gateron.com/supply/218.html)  
     [Sprit MX Supreme Series 50 S](https://www.spritdesigns.com/mx)
 
 - Esc
@@ -27,7 +27,7 @@
 
 - Alt
 
-    [NoverKeys BOX Royal](https://novelkeys.xyz/products/novelkeys-box-royal-switches)
+    [NoverKeys BOX Royal](https://novelkeys.xyz/products/novelkeys-box-royal-switches)  
     スプリングのみ[Kailh BOX Red](http://www.kailh.com/en/Products/Ks/BOXS/317.html)に交換
 
 
