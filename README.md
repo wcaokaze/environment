@@ -36,7 +36,7 @@
 
 |                |                                                                                               |
 |----------------|-----------------------------------------------------------------------------------------------|
-| キーボード     | [キーボード](keyboard.md)参照                                                                     |
+| キーボード     | [キーボード](Keyboard.md)参照                                                                 |
 | トラックボール | [Logicool MX ERGO](https://www.logicool.co.jp/ja-jp/product/mx-ergo-wireless-trackball-mouse) |
 | スピーカー     | [SONY SRS-ZR7](https://www.sony.jp/active-speaker/products/SRS-ZR7/)                          |
 | ヘッドホン     | [SONY WH-1000XM3](https://www.sony.jp/headphone/products/WH-1000XM3/)                         |
