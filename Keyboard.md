@@ -12,10 +12,10 @@
 
 ### キースイッチ
 
-- 下記以外
+- 下記キー以外
 
     [Gateron Ink Silent Black](http://www.gateron.com/supply/218.html)  
-    [Sprit MX Supreme Series 50 S](https://www.spritdesigns.com/mx)
+    スプリングのみ[Sprit MX Supreme Series 50 S](https://www.spritdesigns.com/mx)に交換
 
 - Esc
 
