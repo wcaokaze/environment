@@ -37,7 +37,8 @@
 
 ![7sKB](https://raw.githubusercontent.com/wcaokaze/environment/master/imgs/wasd-wcaokaze.svg?sanitize=true)
 
-フォントは[Cica](https://github.com/miiton/Cica)です。大好きなフォントです
+フォントは[Cica](https://github.com/miiton/Cica)です。大好きなフォントです。
+ずっと愛用してます。ありがとうございます
 
 
 ### キー配列
