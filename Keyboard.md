@@ -37,8 +37,14 @@
 
 ![7sKB](https://raw.githubusercontent.com/wcaokaze/environment/master/imgs/wasd-wcaokaze.svg?sanitize=true)
 
+[wasd Blank Cherry MX Keycap Row 3, Size 1x1.50](https://www.wasdkeyboards.com/row-3-size-1x1-50-cherry-mx-keycap.html) (Altキー用、Black×2)  
+[wasd Blank Cherry MX Keycap Row 3, Size 1x1.50](https://www.wasdkeyboards.com/row-3-size-1x1-50-cherry-mx-keycap.html) (スペースキー用、Charcoal×1)  
+[wasd Blank Cherry MX Keycap Row 1, Size 1x1.75](https://www.wasdkeyboards.com/row-1-size-1x1-75-cherry-mx-keycap.html) (]キー用、Charcoal×1)
+
 フォントは[Cica](https://github.com/miiton/Cica)です。大好きなフォントです。
 ずっと愛用してます。ありがとうございます
+
+7sKB用ですが、一応理論上はChoco60にも対応できるようになってるはずです。
 
 
 ### キー配列
