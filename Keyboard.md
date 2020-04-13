@@ -64,3 +64,17 @@
 
 [wcaokaze-7sKB](https://github.com/wcaokaze/wcaokaze-7sKB/blob/wcaokaze/readme.md)
 
+
+### 潤滑剤
+
+- スプリング用
+
+    Krytox GPL 105
+
+- ステム、スタビライザー用
+
+    Tribosys 3204
+
+
+スタビライザーの消音用の絆創膏は近所のセブンイレブンに売ってたやつを適当に使ってます
+
