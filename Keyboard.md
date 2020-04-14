@@ -83,7 +83,6 @@
 スタビライザーの消音用の絆創膏は近所のセブンイレブンに売ってたやつを適当に使ってます
 
 
-打鍵音の比較をどうぞ
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/hBwtmV6R2bk" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+打鍵音の比較をどうぞ  
+[https://youtu.be/hBwtmV6R2bk](https://youtu.be/hBwtmV6R2bk)
 
