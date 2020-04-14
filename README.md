@@ -54,14 +54,16 @@
 
 ### その他
 
-|                      |                                                                                                                       |
-|----------------------|-----------------------------------------------------------------------------------------------------------------------|
-| デスク               | [ディノスのやつ](https://www.dinos.co.jp/p/1300400638/) 180cm × 80cm                                                  |
-| チェア               | [オカムラ サブリナ(スマートオペレーション)](http://www.okamura.co.jp/product/seating/sabrina/)エクストラハイバック 黒 |
-| フットレスト         | [オカムラ ピエルポ](http://www.okamura.co.jp/product/seating/pierpo/)                                                 |
-| モニタースタンド     | [サンワサプライ MR-LC304BK](https://www.sanwa.co.jp/product/syohin.asp?code=MR-LC304BK)                               |
-| キーボードスライダー | [サンワサプライ MR-LCST](https://www.sanwa.co.jp/product/syohin.asp?code=MR-LCST)                                     |
-| 充電器               | [Anker PowerPort Speed 5](https://www.ankerjapan.com/item/A2054.html)                                                 |
+|                      |                                                                                                                                       |
+|----------------------|---------------------------------------------------------------------------------------------------------------------------------------|
+| デスク               | [ディノスのやつ](https://www.dinos.co.jp/p/1300400638/) 180cm × 80cm                                                                  |
+| チェア               | [オカムラ サブリナ(スマートオペレーション)](http://www.okamura.co.jp/product/seating/sabrina/)エクストラハイバック 黒                 |
+| パームレスト (左)    | [FILCO Majestouch Wrist Rest "Macaron" 薄型12mm・Ｓサイズ・分離型(2分割)・Ash](https://www.diatec.co.jp/products/det.php?prod_c=4052) |
+| パームレスト (右)    | [FILCO Majestouch Wrist Rest "Macaron" 厚型17mm・Ｓサイズ・分離型(2分割)・Ash](https://www.diatec.co.jp/products/det.php?prod_c=4046) |
+| フットレスト         | [オカムラ ピエルポ](http://www.okamura.co.jp/product/seating/pierpo/)                                                                 |
+| モニタースタンド     | [サンワサプライ MR-LC304BK](https://www.sanwa.co.jp/product/syohin.asp?code=MR-LC304BK)                                               |
+| キーボードスライダー | [サンワサプライ MR-LCST](https://www.sanwa.co.jp/product/syohin.asp?code=MR-LCST)                                                     |
+| 充電器               | [Anker PowerPort Speed 5](https://www.ankerjapan.com/item/A2054.html)                                                                 |
 
 
 ### ソフトウェア環境等
