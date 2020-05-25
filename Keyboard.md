@@ -11,15 +11,10 @@
 
 ### PCB
 
-[7sKB](https://salicylic-acid3.hatenablog.com/entry/7skb-introduction) (rev1.1)
+[7sPro](https://salicylic-acid3.hatenablog.com/entry/7spro-build-guide)
 
 
 ### キースイッチ
-
-- 下記キー以外
-
-    [Gateron Ink Silent Black](http://www.gateron.com/supply/218.html)  
-    スプリングのみ[Sprit MX Supreme Series 50 S](https://www.spritdesigns.com/mx)に交換
 
 - Esc
 
@@ -34,21 +29,35 @@
     [NoverKeys BOX Royal](https://novelkeys.xyz/products/novelkeys-box-royal-switches)  
     スプリングのみ[Kailh BOX Red](http://www.kailh.com/en/Products/Ks/BOXS/317.html)に交換
 
+- Tab, Ctrl, Shift, fn, Enter, ]
+
+    [Gateron Ink Silent Black](http://www.gateron.com/supply/218.html)  
+    スプリングのみ[Sprit MX Supreme Series 50 S](https://www.spritdesigns.com/mx)に交換
+
+- BackSpace
+
+    [Gateron Ink Silent Black](http://www.gateron.com/supply/218.html)  
+    スプリングのみ[Sprit MX Supreme Series 55 S Slow](https://www.spritdesigns.com/mx)に交換
+
+- 上記キー以外
+
+    [Kailh BOX Silent Pink](http://www.kailh.com/en/Products/Ks/BOXS/754.html)
+
 
 ### キーキャップ
 
 [wasd Custom Cherry MX Keycap Set](https://www.wasdkeyboards.com/104-key-custom-cherry-mx-keycap-set.html)
 
-![7sKB](https://raw.githubusercontent.com/wcaokaze/environment/master/imgs/wasd-wcaokaze.svg?sanitize=true)
+![7sPro](https://raw.githubusercontent.com/wcaokaze/environment/master/imgs/wasd-wcaokaze.svg?sanitize=true)
 
 [wasd Blank Cherry MX Keycap Row 3, Size 1x1.50](https://www.wasdkeyboards.com/row-3-size-1x1-50-cherry-mx-keycap.html) (Altキー用、Black×2)  
 [wasd Blank Cherry MX Keycap Row 3, Size 1x1.50](https://www.wasdkeyboards.com/row-3-size-1x1-50-cherry-mx-keycap.html) (スペースキー用、Charcoal×1)  
 [wasd Blank Cherry MX Keycap Row 1, Size 1x1.75](https://www.wasdkeyboards.com/row-1-size-1x1-75-cherry-mx-keycap.html) (]キー用、Charcoal×1)
 
+7sPro用ですが、一応理論上はChoco60にも対応できるようになってるはずです。
+
 フォントは[Cica](https://github.com/miiton/Cica)です。大好きなフォントです。
 ずっと愛用してます。ありがとうございます
-
-7sKB用ですが、一応理論上はChoco60にも対応できるようになってるはずです。
 
 **最下段のキー**  
 左から順に  
