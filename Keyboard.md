@@ -31,12 +31,12 @@
 
 - Tab, Ctrl, Shift, fn, Enter, ]
 
-    [Gateron Ink Silent Black](http://www.gateron.com/supply/218.html)  
+    Gateron Ink Silent Black  
     スプリングのみ[Sprit MX Supreme Series 50 S](https://www.spritdesigns.com/mx)に交換
 
 - BackSpace
 
-    [Gateron Ink Silent Black](http://www.gateron.com/supply/218.html)  
+    Gateron Ink Silent Black  
     スプリングのみ[Sprit MX Supreme Series 55 S Slow](https://www.spritdesigns.com/mx)に交換
 
 - 上記キー以外
