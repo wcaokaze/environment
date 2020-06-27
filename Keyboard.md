@@ -41,7 +41,7 @@
 
 - 上記キー以外
 
-    [Kailh BOX Silent Pink](http://www.kailh.com/en/Products/Ks/BOXS/754.html)
+    Gateron Silent Clear
 
 
 ### キーキャップ
