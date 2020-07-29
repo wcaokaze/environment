@@ -11,7 +11,7 @@
 
 ### PCB
 
-[7sPro](https://salicylic-acid3.hatenablog.com/entry/7spro-build-guide)
+[7sKB](https://salicylic-acid3.hatenablog.com/entry/7skb-introduction) (rev1.1)
 
 
 ### キースイッチ
@@ -29,19 +29,10 @@
     [NoverKeys BOX Royal](https://novelkeys.xyz/products/novelkeys-box-royal-switches)  
     スプリングのみ[Kailh BOX Red](http://www.kailh.com/en/Products/Ks/BOXS/317.html)に交換
 
-- Tab, Ctrl, Shift, fn, Enter, ]
+- 上記キー以外
 
     Gateron Ink Silent Black  
     スプリングのみ[Sprit MX Supreme Series 50 S](https://www.spritdesigns.com/mx)に交換
-
-- BackSpace
-
-    Gateron Ink Silent Black  
-    スプリングのみ[Sprit MX Supreme Series 55 S Slow](https://www.spritdesigns.com/mx)に交換
-
-- 上記キー以外
-
-    Gateron Silent Clear
 
 
 ### キーキャップ
@@ -54,7 +45,7 @@
 [wasd Blank Cherry MX Keycap Row 3, Size 1x1.50](https://www.wasdkeyboards.com/row-3-size-1x1-50-cherry-mx-keycap.html) (スペースキー用、Charcoal×1)  
 [wasd Blank Cherry MX Keycap Row 1, Size 1x1.75](https://www.wasdkeyboards.com/row-1-size-1x1-75-cherry-mx-keycap.html) (]キー用、Charcoal×1)
 
-7sPro用ですが、一応理論上はChoco60にも対応できるようになってるはずです。
+7sKB用ですが、一応理論上はChoco60にも対応できるようになってるはずです。
 
 フォントは[Cica](https://github.com/miiton/Cica)です。大好きなフォントです。
 ずっと愛用してます。ありがとうございます
