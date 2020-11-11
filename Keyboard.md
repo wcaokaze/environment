@@ -4,17 +4,15 @@
 
 ![Ninja60](https://raw.githubusercontent.com/wcaokaze/environment/master/imgs/Ninja60.JPG)
 
-![Ninja60](https://raw.githubusercontent.com/wcaokaze/environment/master/imgs/Ninja60_left.JPG)
-
 
 ### PCB
 
-Ninja60 試作1号機
+Ninja60 試作2号機
 
 
 ### キースイッチ
 
-- Esc
+- IME
 
     [Zeal PC Zilent 62g](https://zealpc.net/collections/switches/products/zilents)
 
@@ -22,9 +20,15 @@ Ninja60 試作1号機
 
     [Kailh BOX White](http://www.kailh.com/en/Products/Ks/BOXS/315.html)
 
+- Alt
+
+    [NoverKeys BOX Royal](https://novelkeys.xyz/products/novelkeys-box-royal-switches)  
+    スプリングのみ[Kailh BOX Red](http://www.kailh.com/en/Products/Ks/BOXS/317.html)に交換
+
 - 上記キー以外
 
-    [Gateron Silent Clear](http://www.gateron.com/product/19213.html)
+    [Gateron Silent Red](http://www.gateron.com/product/19206.html)  
+    スプリングのみ[Sprit MX 63.5 Progressive](https://www.spritdesigns.com/mx)に交換
 
 
 ### キーキャップ
