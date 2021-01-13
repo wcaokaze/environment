@@ -22,7 +22,7 @@
 
 |              |                                                                                                                                                                                                                                       |
 |--------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| ケース       | [LIAN LI PC-05](http://www.lian-li.com/pc-05/)                                                                                                                                                                                        |
+| ケース       | LIAN LI PC-05                                                                                                                                                                                                                         |
 | マザーボード | [ASUS H170I-PRO](https://www.asus.com/jp/Motherboards/H170I-PRO/)                                                                                                                                                                     |
 | CPU          | [Intel i7-6700](https://ark.intel.com/content/www/jp/ja/ark/products/88196/intel-core-i7-6700-processor-8m-cache-up-to-4-00-ghz.html)                                                                                                 |
 | CPUクーラー  | [RAIJINTEK ZELOS 0R100003](http://www.raijintek.com/jp/products_detail.php?ProductID=8)                                                                                                                                               |
