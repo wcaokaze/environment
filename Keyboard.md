@@ -14,7 +14,7 @@ Ninja60 試作2号機
 
 - IME
 
-    [Zeal PC Zilent 62g](https://zealpc.net/collections/switches/products/zilents)
+    Zeal PC Zilent 62g
 
 - NumLock
 
