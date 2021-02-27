@@ -28,7 +28,8 @@
 | CPUクーラー  | [RAIJINTEK ZELOS 0R100003](http://www.raijintek.com/jp/products_detail.php?ProductID=8)                                                                                                                                               |
 | グラボ       | [Palit GeForce GTX 1650 KalmX](http://www.palit.com/palit/vgapro.php?id=3494)                                                                                                                                                         |
 | メモリ       | [KLEVV CRAS II KM4Z16GX2A-3000-15-16-16-36-1](http://www.klevv.com/kjp/products_details/memory/Klevv_CrasII.php)                                                                                                                      |
-| SSD          | Samsung NVMe SSD 950 PRO MZ-V5P256B/IT                                                                                                                                                                                                |
+| SSD          | TOSHIBA THNSNJ128GCSU (Windows10)                                                                                                                                                                                                     |
+| SSD          | Samsung NVMe SSD 950 PRO MZ-V5P256B/IT (Ubuntu 16.04 LTS)                                                                                                                                                                             |
 | 電源         | [CORSAIR SF600](https://www.corsair.com/ja/ja/%E3%82%AB%E3%83%86%E3%82%B4%E3%83%AA%E3%83%BC/%E8%A3%BD%E5%93%81/%E9%9B%BB%E6%BA%90%E3%83%A6%E3%83%8B%E3%83%83%E3%83%88/SF-Series%E2%84%A2-80-PLUS-Gold-Power-Supplies/p/CP-9020105-JP) |
 
 
