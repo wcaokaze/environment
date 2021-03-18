@@ -36,13 +36,13 @@
 
 ### デバイス
 
-|                |                                                                                               |
-|----------------|-----------------------------------------------------------------------------------------------|
-| キーボード     | [キーボード](Keyboard.md)参照                                                                 |
-| トラックボール | [Logicool MX ERGO](https://www.logicool.co.jp/ja-jp/product/mx-ergo-wireless-trackball-mouse) |
-| スピーカー     | [SONY SRS-ZR7](https://www.sony.jp/active-speaker/products/SRS-ZR7/)                          |
-| ヘッドホン     | [SONY WH-1000XM3](https://www.sony.jp/headphone/products/WH-1000XM3/)                         |
-| ペンタブ       | [Wacom Intuos Comic M](https://www.wacom.com/ja-jp/products/pen-tablets/intuos-comic-m)       |
+|            |                                                                                                    |
+|------------|----------------------------------------------------------------------------------------------------|
+| キーボード | [キーボード](Keyboard.md)参照                                                                      |
+| マウス     | [Logicool MX Master 3](https://www.logicool.co.jp/ja-jp/products/mice/mx-master-3.910-005707.html) |
+| スピーカー | [SONY SRS-ZR7](https://www.sony.jp/active-speaker/products/SRS-ZR7/)                               |
+| ヘッドホン | [SONY WH-1000XM3](https://www.sony.jp/headphone/products/WH-1000XM3/)                              |
+| ペンタブ   | [Wacom Intuos Comic M](https://www.wacom.com/ja-jp/products/pen-tablets/intuos-comic-m)            |
 
 
 ### モニタ
