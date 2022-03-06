@@ -9,14 +9,6 @@
 
 ![0](https://raw.githubusercontent.com/wcaokaze/environment/master/imgs/0.jpg)
 
-[1](https://raw.githubusercontent.com/wcaokaze/environment/master/imgs/1.jpg)
-[2](https://raw.githubusercontent.com/wcaokaze/environment/master/imgs/2.jpg)
-[3](https://raw.githubusercontent.com/wcaokaze/environment/master/imgs/3.jpg)
-[4](https://raw.githubusercontent.com/wcaokaze/environment/master/imgs/4.jpg)
-[5](https://raw.githubusercontent.com/wcaokaze/environment/master/imgs/5.jpg)
-[6](https://raw.githubusercontent.com/wcaokaze/environment/master/imgs/6.jpg)
-[7](https://raw.githubusercontent.com/wcaokaze/environment/master/imgs/7.jpg)
-
 
 ### PC
 
