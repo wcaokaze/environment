@@ -31,7 +31,7 @@
 |            |                                                                                                                                                                                    |
 |------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | キーボード | Claw44 (v1) + [Gateron Silent Clear](http://www.gateron.com/product/19213.html) + [ぜろけー氏 3Dキーキャップ](https://make.dmm.com/item/1009976/) + Krytox GPL 105 + Tribosys 3204 |
-| マウス     | [Logicool MX Master 3](https://www.logicool.co.jp/ja-jp/products/mice/mx-master-3.910-005707.html)                                                                                 |
+| マウス     | [Logicool MX Master 3S](https://www.logicool.co.jp/ja-jp/products/mice/mx-master-3s.910-006567.html)                                                                               |
 | スピーカー | [SONY SRS-ZR7](https://www.sony.jp/active-speaker/products/SRS-ZR7/)                                                                                                               |
 | ヘッドホン | [SONY WH-1000XM3](https://www.sony.jp/headphone/products/WH-1000XM3/)                                                                                                              |
 | ペンタブ   | [Wacom Intuos Comic M](https://www.wacom.com/ja-jp/products/pen-tablets/intuos-comic-m)                                                                                            |
