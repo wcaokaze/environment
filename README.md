@@ -78,15 +78,3 @@
 |----------------|--------------------|------------|
 | メイン端末     | Pixel 6 Pro        | Android 12 |
 | デバッグ用端末 | LAVIE Tab E 10FHD2 | Android 10 |
-
-
-### Macbook
-
-|            |                                             |
-|------------|---------------------------------------------|
-| Macbook    | Air 11-inch Early 2015                      |
-| OS         | OS X El Capitan (10.11.4), Ubuntu 16.04 LTS |
-| CPU        | 2.2 GHz Core i7                             |
-| メモリ     | 8GB                                         |
-| キーボード | US (キー配列はDvorak)                       |
-
