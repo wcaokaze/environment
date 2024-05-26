@@ -14,7 +14,7 @@
 
 |              |                                                                                                                                                                                                                                       |
 |--------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| ケース       | LIAN LI PC-05                                                                                                                                                                                                                         |
+| ケース       | LIAN LI PC-O5                                                                                                                                                                                                                         |
 | マザーボード | [ASRock Z790 PG-ITX/TB4](https://pg.asrock.com/mb/Intel/Z790%20PG-ITXTB4/index.jp.asp)                                                                                                                                                |
 | CPU          | [Intel Core i9-14900](https://www.intel.co.jp/content/www/jp/ja/products/sku/236793/intel-core-i9-processor-14900-36m-cache-up-to-5-80-ghz/specifications.html)                                                                       |
 | CPUクーラー  | [DeepCool ASSASSIN 4S](https://jp.deepcool.com/products/Cooling/cpuaircoolers/Assassin-4S-Minimalistic-Premium-CPU-Air-Cooler-1700-AM5/2023/17891.shtml)                                                                              |
