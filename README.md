@@ -74,11 +74,10 @@
 
 ### スメィホ
 
-|                |                           |                               |
-|----------------|---------------------------|-------------------------------|
-| メイン端末     | Pixel 6 Pro               | Android 12                    |
-| サブ端末       | E6853 (Xperia Z5 Premium) | Cynanogen Mod 13.0 unofficial |
-| デバッグ用端末 | LAVIE Tab E 10FHD2        | Android 10                    |
+|                |                    |            |
+|----------------|--------------------|------------|
+| メイン端末     | Pixel 6 Pro        | Android 12 |
+| デバッグ用端末 | LAVIE Tab E 10FHD2 | Android 10 |
 
 
 ### Macbook
