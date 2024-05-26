@@ -15,14 +15,13 @@
 |              |                                                                                                                                                                                                                                       |
 |--------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | ケース       | LIAN LI PC-05                                                                                                                                                                                                                         |
-| マザーボード | [ASUS H170I-PRO](https://www.asus.com/jp/Motherboards/H170I-PRO/)                                                                                                                                                                     |
-| CPU          | [Intel i7-6700](https://ark.intel.com/content/www/jp/ja/ark/products/88196/intel-core-i7-6700-processor-8m-cache-up-to-4-00-ghz.html)                                                                                                 |
-| CPUクーラー  | [RAIJINTEK ZELOS 0R100003](http://www.raijintek.com/jp/products_detail.php?ProductID=8)                                                                                                                                               |
-| グラボ       | [Palit GeForce GTX 1650 KalmX](http://www.palit.com/palit/vgapro.php?id=3494)                                                                                                                                                         |
-| メモリ       | [KLEVV CRAS II KM4Z16GX2A-3000-15-16-16-36-1](http://www.klevv.com/kjp/products_details/memory/Klevv_CrasII.php)                                                                                                                      |
-| SSD          | TOSHIBA THNSNJ128GCSU (Windows10)                                                                                                                                                                                                     |
-| SSD          | Samsung NVMe SSD 950 PRO MZ-V5P256B/IT (Ubuntu 16.04 LTS)                                                                                                                                                                             |
+| マザーボード | [ASRock Z790 PG-ITX/TB4](https://pg.asrock.com/mb/Intel/Z790%20PG-ITXTB4/index.jp.asp)                                                                                                                                                |
+| CPU          | [Intel Core i9-14900](https://www.intel.co.jp/content/www/jp/ja/products/sku/236793/intel-core-i9-processor-14900-36m-cache-up-to-5-80-ghz/specifications.html)                                                                       |
+| CPUクーラー  | [DeepCool ASSASSIN 4S](https://jp.deepcool.com/products/Cooling/cpuaircoolers/Assassin-4S-Minimalistic-Premium-CPU-Air-Cooler-1700-AM5/2023/17891.shtml)                                                                              |
+| グラボ       | [ELSA GeForce RTX 4060 S.A.C](https://www.elsa-jp.co.jp/products/detail/geforce-rtx-4060-s-a-c/)                                                                                                                                      |
+| メモリ       | [CORSAIR VENGEANCE](https://www.corsair.com/ww/ja/p/memory/cmk64gx5m2b5600c40/vengeancea-64gb-2x32gb-ddr5-dram-5600mhz-c40-memory-kit-a-black-cmk64gx5m2b5600c40) 64GB (2x32GB) DDR5 5600MHz                                          |
 | SSD          | Western Digital Blue SN550 WDS100T2B0C (Ubuntu 23.10)                                                                                                                                                                                 |
+| SSD          | Samsung 990 PRO with Heatsink MZ-V9P1T0G-IT (Ubuntu 24.04 LTS)                                                                                                                                                                           |
 | 電源         | [CORSAIR SF600](https://www.corsair.com/ja/ja/%E3%82%AB%E3%83%86%E3%82%B4%E3%83%AA%E3%83%BC/%E8%A3%BD%E5%93%81/%E9%9B%BB%E6%BA%90%E3%83%A6%E3%83%8B%E3%83%83%E3%83%88/SF-Series%E2%84%A2-80-PLUS-Gold-Power-Supplies/p/CP-9020105-JP) |
 
 
@@ -39,11 +38,11 @@
 
 ### モニタ
 
-|        |                    |                                                  |
-|--------|--------------------|--------------------------------------------------|
-| 左     | iiyama B2280HS-B1  | 21.5インチ、FHD(1920x1080)、ノングレア、ピボット |
-| 真ん中 | acer KG271Ubmiippx | 27インチ、WQHD(2560x1440)、ノングレア            |
-| 右     | acer H236HL bmd    | 23インチ、FHD(1920x1080)、グレア                 |
+|        |                                                                   |                            |
+|--------|-------------------------------------------------------------------|----------------------------|
+| 左     | iiyama B2280HS-B1                                                 | 21.5インチ、FHD(1920x1080) |
+| 真ん中 | acer KG271Ubmiippx                                                | 27インチ、WQHD(2560x1440)  |
+| 右     | [LG 22MR410-B](https://www.lg.com/jp/monitors/fhd-qhd/22mr410-b/) | 21.5インチ、FHD(1920x1080) |
 
 
 ### その他
@@ -55,16 +54,16 @@
 | パームレスト (左)    | [FILCO Majestouch Wrist Rest "Macaron" 薄型12mm・Ｓサイズ・分離型(2分割)・Ash](https://www.diatec.co.jp/products/det.php?prod_c=4052)                                                                                                                                                                                                                                                |
 | パームレスト (右)    | [FILCO Majestouch Wrist Rest "Macaron" 厚型17mm・Ｓサイズ・分離型(2分割)・Ash](https://www.diatec.co.jp/products/det.php?prod_c=4046)                                                                                                                                                                                                                                                |
 | フットレスト         | [オカムラ ピエルポ](http://www.okamura.co.jp/product/seating/pierpo/)                                                                                                                                                                                                                                                                                                                |
-| モニタースタンド     | [サンワサプライ MR-LC304BK](https://www.sanwa.co.jp/product/syohin.asp?code=MR-LC304BK)                                                                                                                                                                                                                                                                                              |
+| モニターアーム       | [Bauhutte ロングモニターアームGS BMA-3GS-BK](https://www.bauhutte.jp/product/bma-gs/)                                                                                                                                                                                                                                                                                                |
+| モニター台           | [サンワサプライ 100-MR183W](https://direct.sanwa.co.jp/ItemPage/100-MR183W)                                                                                                                                                                                                                                                                                                          |
 | キーボードスライダー | [サンワサプライ MR-LCST](https://www.sanwa.co.jp/product/syohin.asp?code=MR-LCST)                                                                                                                                                                                                                                                                                                    |
-| 充電器               | [Anker PowerPort Speed 5](https://www.ankerjapan.com/item/A2054.html)                                                                                                                                                                                                                                                                                                                |
 
 
 ### ソフトウェア環境等
 
 |                  |                                                                                                                                                                                                                                                                                                                  |
 |------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| OS               | [Ubuntu](https://ubuntu.com/) 23.10                                                                                                                                                                                                                                                                              |
+| OS               | [Ubuntu](https://ubuntu.com/) 24.04 LTS                                                                                                                                                                                                                                                                          |
 | ブラウザ         | [Vivaldi](https://vivaldi.com)                                                                                                                                                                                                                                                                                   |
 | 端末エミュレータ | [Terminator](https://gnometerminator.blogspot.com/)                                                                                                                                                                                                                                                              |
 | シェル           | [zsh](http://www.zsh.org/) + [Prezto](https://github.com/sorin-ionescu/prezto) + [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions)                                                                                                                                                         |
