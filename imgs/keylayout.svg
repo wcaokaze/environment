@@ -1,3 +1,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" viewBox="0 0 300 300">
-   <rect width="300" height="300" fill="#fff"/>
+   <style>
+      rect {
+         fill: transparent;
+         stroke: black;
+      }
+      line {
+         fill: transparent;
+         stroke: black;
+      }
+   </style>
+   <rect width="300" height="300" style="fill: white;"/>
 </svg>

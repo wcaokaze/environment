@@ -22,10 +22,24 @@ fn main() -> io::Result<()> {
          Ok(())
       },
       |writer| {
+         writer.append_style(|writer| {
+            writer.append_style("rect", |writer| {
+               writer.append_prop("fill", "transparent")?;
+               writer.append_prop("stroke", "black")?;
+               Ok(())
+            })?;
+            writer.append_style("line", |writer| {
+               writer.append_prop("fill", "transparent")?;
+               writer.append_prop("stroke", "black")?;
+               Ok(())
+            })?;
+            Ok(())
+         })?;
+
          writer.append_empty_element("rect", |writer| {
             writer.append_attr("width",  &CANVAS_WIDTH .to_string())?;
             writer.append_attr("height", &CANVAS_HEIGHT.to_string())?;
-            writer.append_attr("fill", "#fff")?;
+            writer.append_attr("style", "fill: white;")?;
             Ok(())
          })?;
 
@@ -107,6 +121,23 @@ mod svg_writer {
          self.write(b">\n")?;
          Ok(())
       }
+
+      pub fn append_style<'a>(
+         &mut self,
+         styles: impl FnOnce(&mut StyleWriter<W>) -> io::Result<()>
+      ) -> io::Result<()> {
+         self.append_indent()?;
+         self.write(b"<style>\n")?;
+
+         self.indent += 1;
+         let mut style_writer = StyleWriter::new(self);
+         styles(&mut style_writer)?;
+         self.indent -= 1;
+
+         self.append_indent()?;
+         self.write(b"</style>\n")?;
+         Ok(())
+      }
    }
 
    pub struct AttrWriter<'svg, W: Write> {
@@ -130,6 +161,62 @@ mod svg_writer {
          self.svg_writer.write(b"=\"")?;
          self.svg_writer.write(value.as_bytes())?;
          self.svg_writer.write(b"\"")?;
+         Ok(())
+      }
+   }
+
+   pub struct StyleWriter<'svg, W: Write> {
+      svg_writer: &'svg mut SvgWriter<W>
+   }
+
+   impl<W: Write> StyleWriter<'_, W> {
+      fn new<'a>(svg_writer: &'a mut SvgWriter<W>) -> StyleWriter<'a, W> {
+         StyleWriter {
+            svg_writer
+         }
+      }
+
+      pub fn append_style<'a>(
+         &mut self,
+         selector: &'a str,
+         props: impl FnOnce(&mut StylePropWriter<W>) -> io::Result<()>
+      ) -> io::Result<()> {
+         self.svg_writer.append_indent()?;
+         self.svg_writer.write(selector.as_bytes())?;
+         self.svg_writer.write(b" {\n")?;
+
+         self.svg_writer.indent += 1;
+         let mut prop_writer = StylePropWriter::new(self.svg_writer);
+         props(&mut prop_writer)?;
+         self.svg_writer.indent -= 1;
+
+         self.svg_writer.append_indent()?;
+         self.svg_writer.write(b"}\n")?;
+         Ok(())
+      }
+   }
+
+   pub struct StylePropWriter<'svg, W: Write> {
+      svg_writer: &'svg mut SvgWriter<W>
+   }
+
+   impl<W: Write> StylePropWriter<'_, W> {
+      fn new<'a>(svg_writer: &'a mut SvgWriter<W>) -> StylePropWriter<'a, W> {
+         StylePropWriter {
+            svg_writer
+         }
+      }
+
+      pub fn append_prop<'a>(
+         &mut self,
+         prop: &'a str,
+         value: &'a str
+      ) -> io::Result<()> {
+         self.svg_writer.append_indent()?;
+         self.svg_writer.write(prop.as_bytes())?;
+         self.svg_writer.write(b": ")?;
+         self.svg_writer.write(value.as_bytes())?;
+         self.svg_writer.write(b";\n")?;
          Ok(())
       }
    }
