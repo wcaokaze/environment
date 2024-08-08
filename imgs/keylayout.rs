@@ -9,45 +9,71 @@ const CANVAS_HEIGHT: usize = 300;
 
 fn main() -> io::Result<()> {
    let output = File::create("keylayout.svg")?;
-   let output = BufWriter::new(output);
-   let mut writer = SvgWriter::new(output);
-
-   writer.append_element(
-      "svg",
-      |writer| {
-         writer.append_attr("xmlns", "http://www.w3.org/2000/svg")?;
-         writer.append_attr("width",  &CANVAS_WIDTH .to_string())?;
-         writer.append_attr("height", &CANVAS_HEIGHT.to_string())?;
-         writer.append_attr("viewBox", &format!("0 0 {CANVAS_WIDTH} {CANVAS_HEIGHT}"))?;
-         Ok(())
-      },
-      |writer| {
-         writer.append_style(|writer| {
-            writer.append_style("rect", |writer| {
-               writer.append_prop("fill", "transparent")?;
-               writer.append_prop("stroke", "black")?;
-               Ok(())
-            })?;
-            writer.append_style("line", |writer| {
-               writer.append_prop("fill", "transparent")?;
-               writer.append_prop("stroke", "black")?;
-               Ok(())
-            })?;
-            Ok(())
-         })?;
-
-         writer.append_empty_element("rect", |writer| {
-            writer.append_attr("width",  &CANVAS_WIDTH .to_string())?;
-            writer.append_attr("height", &CANVAS_HEIGHT.to_string())?;
-            writer.append_attr("style", "fill: white;")?;
-            Ok(())
-         })?;
-
-         Ok(())
-      }
-   )?;
+   KeyLayoutWriter::write(output, |writer| {
+      Ok(())
+   })?;
 
    Ok(())
+}
+
+struct KeyLayoutWriter<'svg> {
+   svg_writer: &'svg mut SvgWriter<BufWriter<File>>
+}
+
+impl KeyLayoutWriter<'_> {
+   fn new<'svg>(
+      svg_writer: &'svg mut SvgWriter<BufWriter<File>>
+   ) -> KeyLayoutWriter<'svg> {
+      KeyLayoutWriter { svg_writer }
+   }
+
+   pub fn write(
+      file: File,
+      content: impl FnOnce(&mut KeyLayoutWriter) -> io::Result<()>
+   ) -> io::Result<()> {
+      let output = BufWriter::new(file);
+      let mut svg_writer = SvgWriter::new(output);
+
+      svg_writer.append_element(
+         "svg",
+         |writer| {
+            writer.append_attr("xmlns", "http://www.w3.org/2000/svg")?;
+            writer.append_attr("width",  &CANVAS_WIDTH .to_string())?;
+            writer.append_attr("height", &CANVAS_HEIGHT.to_string())?;
+            writer.append_attr("viewBox", &format!("0 0 {CANVAS_WIDTH} {CANVAS_HEIGHT}"))?;
+            Ok(())
+         },
+         |writer| {
+            writer.append_style(|writer| {
+               writer.append_style("rect", |writer| {
+                  writer.append_prop("fill", "transparent")?;
+                  writer.append_prop("stroke", "black")?;
+                  Ok(())
+               })?;
+               writer.append_style("line", |writer| {
+                  writer.append_prop("fill", "transparent")?;
+                  writer.append_prop("stroke", "black")?;
+                  Ok(())
+               })?;
+               Ok(())
+            })?;
+
+            writer.append_empty_element("rect", |writer| {
+               writer.append_attr("width",  &CANVAS_WIDTH .to_string())?;
+               writer.append_attr("height", &CANVAS_HEIGHT.to_string())?;
+               writer.append_attr("style", "fill: white;")?;
+               Ok(())
+            })?;
+
+            let mut key_layout_writer = Self::new(writer);
+            content(&mut key_layout_writer)?;
+
+            Ok(())
+         }
+      )?;
+
+      Ok(())
+   }
 }
 
 mod svg_writer {
