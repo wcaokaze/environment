@@ -2,18 +2,41 @@
 
 use std::fs::File;
 use std::io::{self, BufWriter};
+use std::mem::MaybeUninit;
 use crate::svg_writer::SvgWriter;
 
 const CANVAS_WIDTH:  usize = 300;
 const CANVAS_HEIGHT: usize = 300;
 
+const KEY_WIDTH:  usize = 50;
+const KEY_HEIGHT: usize = 50;
+
 fn main() -> io::Result<()> {
    let output = File::create("keylayout.svg")?;
    KeyLayoutWriter::write(output, |writer| {
+      let left_alphanumeric_keys = [
+         [  "Tab", "'", ",", ".", "P", "Y"],
+         [ "Ctrl", "A", "O", "E", "U", "I"],
+         ["Shift", "Z", "Q", "J", "K", "X"]
+      ];
+
+      writer.left_alphanumeric(left_alphanumeric_keys)?;
       Ok(())
    })?;
 
    Ok(())
+}
+
+fn transpose<T: Copy, const X: usize, const Y: usize>(m: [[T; X]; Y]) -> [[T; Y]; X] {
+   let mut transposed = [[MaybeUninit::uninit(); Y]; X];
+
+   for (y, row) in m.into_iter().enumerate() {
+      for (x, t) in row.into_iter().enumerate() {
+         transposed[x][y].write(t);
+      }
+   }
+
+   unsafe { transposed.map(|row| row.map(|t| t.assume_init())) }
 }
 
 struct KeyLayoutWriter<'svg> {
@@ -27,7 +50,7 @@ impl KeyLayoutWriter<'_> {
       KeyLayoutWriter { svg_writer }
    }
 
-   pub fn write(
+   fn write(
       file: File,
       content: impl FnOnce(&mut KeyLayoutWriter) -> io::Result<()>
    ) -> io::Result<()> {
@@ -71,6 +94,69 @@ impl KeyLayoutWriter<'_> {
             Ok(())
          }
       )?;
+
+      Ok(())
+   }
+
+   fn left_alphanumeric<'a>(&mut self, keys: [[&'a str; 6]; 3]) -> io::Result<()> {
+      let col_top_positions = [1.0, 0.8, 0.3, 0.0, 0.2, 0.3];
+      let keys = transpose(keys);
+
+      for (x, (column, pos)) in keys.iter().zip(col_top_positions).enumerate() {
+         let x = x * KEY_WIDTH;
+         let y = (pos * KEY_HEIGHT as f64) as usize;
+         self.alphanumeric_column(x, y, column)?;
+      }
+
+      Ok(())
+   }
+
+   fn rect(
+      &mut self,
+      x: usize,
+      y: usize,
+      width: usize,
+      height: usize
+   ) -> io::Result<()> {
+      self.svg_writer.append_empty_element("rect", |writer| {
+         writer.append_attr("x", &x.to_string())?;
+         writer.append_attr("y", &y.to_string())?;
+         writer.append_attr("width",  &width .to_string())?;
+         writer.append_attr("height", &height.to_string())?;
+         Ok(())
+      })?;
+      Ok(())
+   }
+
+   fn line(
+      &mut self,
+      x1: usize,
+      y1: usize,
+      x2: usize,
+      y2: usize
+   ) -> io::Result<()> {
+      self.svg_writer.append_empty_element("line", |writer| {
+         writer.append_attr("x1", &x1.to_string())?;
+         writer.append_attr("y1", &y1.to_string())?;
+         writer.append_attr("x2", &x2.to_string())?;
+         writer.append_attr("y2", &y2.to_string())?;
+         Ok(())
+      })?;
+      Ok(())
+   }
+
+   fn alphanumeric_column<'a, const N: usize>(
+      &mut self,
+      x: usize,
+      y: usize,
+      keys: &[&'a str; N]
+   ) -> io::Result<()> {
+      self.rect(x, y, KEY_WIDTH, KEY_HEIGHT * N)?;
+
+      for i in 1..N {
+         let y = y + i * KEY_HEIGHT;
+         self.line(x, y, x + KEY_WIDTH, y)?;
+      }
 
       Ok(())
    }
