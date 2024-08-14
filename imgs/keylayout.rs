@@ -78,6 +78,11 @@ impl KeyLayoutWriter<'_> {
                   writer.append_prop("stroke", "black")?;
                   Ok(())
                })?;
+               writer.append_style("text", |writer| {
+                  writer.append_prop("font-size", "12px")?;
+                  writer.append_prop("fill", "black")?;
+                  Ok(())
+               })?;
                Ok(())
             })?;
 
@@ -145,17 +150,42 @@ impl KeyLayoutWriter<'_> {
       Ok(())
    }
 
+   fn text<'a>(
+      &mut self,
+      x: usize,
+      y: usize,
+      content: &'a str
+   ) -> io::Result<()> {
+      self.svg_writer.append_raw_element(
+         "text",
+         |writer| {
+            writer.append_attr("x", &x.to_string())?;
+            writer.append_attr("y", &y.to_string())?;
+            Ok(())
+         },
+         content
+      )?;
+      Ok(())
+   }
+
    fn alphanumeric_column<'a, const N: usize>(
       &mut self,
       x: usize,
       y: usize,
       keys: &[&'a str; N]
    ) -> io::Result<()> {
+      if N == 0 { return Ok(()); }
+
       self.rect(x, y, KEY_WIDTH, KEY_HEIGHT * N)?;
 
-      for i in 1..N {
+      for i in 0..N {
          let y = y + i * KEY_HEIGHT;
-         self.line(x, y, x + KEY_WIDTH, y)?;
+
+         self.text(x + 4, y + 16, keys[i])?;
+
+         if i >= 1 {
+            self.line(x, y, x + KEY_WIDTH, y)?;
+         }
       }
 
       Ok(())
@@ -228,6 +258,29 @@ mod svg_writer {
          self.indent -= 1;
 
          self.append_indent()?;
+         self.write(b"</")?;
+         self.write(element.as_bytes())?;
+         self.write(b">\n")?;
+         Ok(())
+      }
+
+      pub fn append_raw_element<'a>(
+         &mut self,
+         element: &'a str,
+         attrs: impl FnOnce(&mut AttrWriter<W>) -> io::Result<()>,
+         str: &'a str
+      ) -> io::Result<()> {
+         self.append_indent()?;
+         self.write(b"<")?;
+         self.write(element.as_bytes())?;
+
+         let mut attr_writer = AttrWriter::new(self);
+         attrs(&mut attr_writer)?;
+
+         self.write(b">")?;
+
+         self.write(str.as_bytes())?;
+
          self.write(b"</")?;
          self.write(element.as_bytes())?;
          self.write(b">\n")?;
