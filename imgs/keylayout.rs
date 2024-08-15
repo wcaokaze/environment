@@ -109,19 +109,6 @@ impl KeyLayoutWriter<'_> {
       Ok(())
    }
 
-   fn left_alphanumeric<'a>(&mut self, keys: [[&'a str; 6]; 3]) -> io::Result<()> {
-      let col_top_positions = [1.0, 0.8, 0.3, 0.0, 0.2, 0.3];
-      let keys = transpose(keys);
-
-      for (x, (column, pos)) in keys.iter().zip(col_top_positions).enumerate() {
-         let x = x * KEY_WIDTH;
-         let y = (pos * KEY_HEIGHT as f64) as usize;
-         self.alphanumeric_column(x, y, column)?;
-      }
-
-      Ok(())
-   }
-
    fn rect(
       &mut self,
       x: usize,
@@ -206,6 +193,19 @@ impl KeyLayoutWriter<'_> {
          if i >= 1 {
             self.line(x, y, x + KEY_WIDTH, y)?;
          }
+      }
+
+      Ok(())
+   }
+
+   fn left_alphanumeric<'a>(&mut self, keys: [[&'a str; 6]; 3]) -> io::Result<()> {
+      let col_top_positions = [1.0, 0.8, 0.3, 0.0, 0.2, 0.3];
+      let keys = transpose(keys);
+
+      for (x, (column, pos)) in keys.iter().zip(col_top_positions).enumerate() {
+         let x = x * KEY_WIDTH;
+         let y = (pos * KEY_HEIGHT as f64) as usize;
+         self.alphanumeric_column(x, y, column)?;
       }
 
       Ok(())
