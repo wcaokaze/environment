@@ -5,8 +5,8 @@ use std::io::{self, BufWriter};
 use std::mem::MaybeUninit;
 use crate::svg_writer::SvgWriter;
 
-const CANVAS_WIDTH:  usize = 300;
-const CANVAS_HEIGHT: usize = 300;
+const CANVAS_WIDTH:  usize = 500;
+const CANVAS_HEIGHT: usize = 400;
 
 const KEY_WIDTH:  usize = 50;
 const KEY_HEIGHT: usize = 50;
@@ -21,6 +21,7 @@ fn main() -> io::Result<()> {
       ];
 
       writer.left_alphanumeric(left_alphanumeric_keys)?;
+      writer.left_thumb()?;
       Ok(())
    })?;
 
@@ -74,6 +75,11 @@ impl KeyLayoutWriter<'_> {
                   Ok(())
                })?;
                writer.append_style("line", |writer| {
+                  writer.append_prop("fill", "transparent")?;
+                  writer.append_prop("stroke", "black")?;
+                  Ok(())
+               })?;
+               writer.append_style("path", |writer| {
                   writer.append_prop("fill", "transparent")?;
                   writer.append_prop("stroke", "black")?;
                   Ok(())
@@ -168,6 +174,20 @@ impl KeyLayoutWriter<'_> {
       Ok(())
    }
 
+   fn path(
+      &mut self,
+      content: impl FnOnce(&mut PathBuilder) -> ()
+   ) -> io::Result<()> {
+      let mut content_builder = PathBuilder::new();
+      content(&mut content_builder);
+
+      self.svg_writer.append_empty_element("path", |writer| {
+         writer.append_attr("d", &content_builder.path)?;
+         Ok(())
+      })?;
+      Ok(())
+   }
+
    fn alphanumeric_column<'a, const N: usize>(
       &mut self,
       x: usize,
@@ -189,6 +209,101 @@ impl KeyLayoutWriter<'_> {
       }
 
       Ok(())
+   }
+
+   fn left_thumb(&mut self) -> io::Result<()> {
+      let outer_radius = 4 * KEY_WIDTH;
+      let inner_radius = outer_radius - KEY_HEIGHT;
+
+      let point = |radius, u| {
+         let center = (4.7 * KEY_WIDTH  as f64, 7.7 * KEY_HEIGHT as f64);
+         let start_angle = f64::to_radians(-105.0);
+         let arc = u * KEY_WIDTH as f64;
+         let angle = start_angle + arc / inner_radius as f64;
+
+         (
+            (center.0 + radius as f64 * f64::cos(angle)) as usize,
+            (center.1 + radius as f64 * f64::sin(angle)) as usize
+         )
+      };
+
+      self.path(|builder| {
+         builder.move_to(
+            point(outer_radius, 0.0).0,
+            point(outer_radius, 0.0).1
+         );
+         builder.arc(
+            outer_radius, outer_radius,
+            /* x_axis_rotation = */ 0.0,
+            /* large_arc_flag = */ false,
+            /* sweep_flag = */ true,
+            point(outer_radius, 4.25).0,
+            point(outer_radius, 4.25).1
+         );
+         builder.line_to(
+            point(inner_radius, 4.25).0,
+            point(inner_radius, 4.25).1
+         );
+         builder.arc(
+            inner_radius, inner_radius,
+            /* x_axis_rotation = */ 0.0,
+            /* large_arc_flag = */ false,
+            /* sweep_flag = */ false,
+            point(inner_radius, 0.0).0,
+            point(inner_radius, 0.0).1
+         );
+         builder.close();
+      })?;
+
+      for u in [1.0, 2.0, 3.25] {
+         let (x1, y1) = point(outer_radius, u);
+         let (x2, y2) = point(inner_radius, u);
+         self.line(x1, y1, x2, y2)?;
+      }
+
+      Ok(())
+   }
+}
+
+struct PathBuilder {
+   path: String
+}
+
+impl PathBuilder {
+   fn new() -> Self {
+      PathBuilder {
+         path: String::new()
+      }
+   }
+
+   fn move_to(&mut self, x: usize, y: usize) {
+      self.path.push_str(&format!("M {x} {y} "));
+   }
+
+   fn line_to(&mut self, x: usize, y: usize) {
+      self.path.push_str(&format!("L {x} {y} "));
+   }
+
+   fn arc(
+      &mut self,
+      rx: usize,
+      ry: usize,
+      x_axis_rotation: f64,
+      large_arc_flag: bool,
+      sweep_flag: bool,
+      x: usize,
+      y: usize
+   ) {
+      let large_arc_flag = if large_arc_flag { 1 } else { 0 };
+      let sweep_flag     = if sweep_flag     { 1 } else { 0 };
+
+      self.path.push_str(&format!(
+         "A {rx} {ry} {x_axis_rotation} {large_arc_flag} {sweep_flag} {x} {y} "
+      ));
+   }
+
+   fn close(&mut self) {
+      self.path.push_str("Z");
    }
 }
 
