@@ -192,11 +192,11 @@ impl KeyLayoutWriter<'_> {
       for i in 0..N {
          let y = y + i * KEY_HEIGHT;
 
-         self.text(x + 4, y + 16, keys[i])?;
-
          if i >= 1 {
             self.line(x, y, x + KEY_WIDTH, y)?;
          }
+
+         self.text(x + 4, y + 16, keys[i])?;
       }
 
       Ok(())
