@@ -5,6 +5,10 @@ use std::io::{self, BufWriter};
 use std::mem::MaybeUninit;
 use crate::svg_writer::SvgWriter;
 
+const ALPHANUMERIC_COL_COUNT: usize = 6;
+const ALPHANUMERIC_ROW_COUNT: usize = 3;
+const THUMB_KEY_COUNT: usize = 4;
+
 const CANVAS_WIDTH:  usize = 500;
 const CANVAS_HEIGHT: usize = 400;
 
@@ -198,7 +202,10 @@ impl KeyLayoutWriter<'_> {
       Ok(())
    }
 
-   fn left_alphanumeric<'a>(&mut self, keys: [[&'a str; 6]; 3]) -> io::Result<()> {
+   fn left_alphanumeric<'a>(
+      &mut self,
+      keys: [[&'a str; ALPHANUMERIC_COL_COUNT]; ALPHANUMERIC_ROW_COUNT]
+   ) -> io::Result<()> {
       let col_top_positions = [1.0, 0.8, 0.3, 0.0, 0.2, 0.3];
       let keys = transpose(keys);
 
@@ -211,7 +218,9 @@ impl KeyLayoutWriter<'_> {
       Ok(())
    }
 
-   fn left_thumb(&mut self) -> io::Result<()> {
+   fn left_thumb<'a>(&mut self) -> io::Result<()> {
+      let key_widths = [1.0, 1.0, 1.25, 1.0];
+
       let outer_radius = 4 * KEY_WIDTH;
       let inner_radius = outer_radius - KEY_HEIGHT;
 
@@ -228,38 +237,50 @@ impl KeyLayoutWriter<'_> {
       };
 
       self.path(|builder| {
-         builder.move_to(
-            point(outer_radius, 0.0).0,
-            point(outer_radius, 0.0).1
-         );
+         let end_u = key_widths.into_iter().sum();
+
+         let (x, y) = point(outer_radius, 0.0);
+         builder.move_to(x, y);
+
+         let (x, y) = point(outer_radius, end_u);
          builder.arc(
             outer_radius, outer_radius,
             /* x_axis_rotation = */ 0.0,
             /* large_arc_flag = */ false,
             /* sweep_flag = */ true,
-            point(outer_radius, 4.25).0,
-            point(outer_radius, 4.25).1
+            x, y
          );
-         builder.line_to(
-            point(inner_radius, 4.25).0,
-            point(inner_radius, 4.25).1
-         );
+
+         let (x, y) = point(inner_radius, end_u);
+         builder.line_to(x, y);
+
+         let (x, y) = point(inner_radius, 0.0);
          builder.arc(
             inner_radius, inner_radius,
             /* x_axis_rotation = */ 0.0,
             /* large_arc_flag = */ false,
             /* sweep_flag = */ false,
-            point(inner_radius, 0.0).0,
-            point(inner_radius, 0.0).1
+            x, y
          );
+
          builder.close();
       })?;
 
-      for u in [1.0, 2.0, 3.25] {
-         let (x1, y1) = point(outer_radius, u);
-         let (x2, y2) = point(inner_radius, u);
-         self.line(x1, y1, x2, y2)?;
-      }
+      key_widths.into_iter()
+         .scan(0.0, |st, u| {
+            *st += u;
+            Some(*st)
+         })
+         .enumerate()
+         .map(|(i, u)| {
+            let (x1, y1) = point(outer_radius, u);
+            let (x2, y2) = point(inner_radius, u);
+
+            if i >= THUMB_KEY_COUNT - 1 { return Ok(()); }
+
+            self.line(x1, y1, x2, y2)
+         })
+         .collect::<io::Result<()>>()?;
 
       Ok(())
    }
