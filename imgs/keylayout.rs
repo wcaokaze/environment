@@ -24,8 +24,10 @@ fn main() -> io::Result<()> {
          ["Shift", "Z", "Q", "J", "K", "X"]
       ];
 
+      let left_thumb_keys = ["Alt", "_", "Space", "Backspace"];
+
       writer.left_alphanumeric(left_alphanumeric_keys)?;
-      writer.left_thumb()?;
+      writer.left_thumb(left_thumb_keys)?;
       Ok(())
    })?;
 
@@ -218,16 +220,18 @@ impl KeyLayoutWriter<'_> {
       Ok(())
    }
 
-   fn left_thumb<'a>(&mut self) -> io::Result<()> {
-      let key_widths = [1.0, 1.0, 1.25, 1.0];
+   fn left_thumb<'a>(
+      &mut self,
+      keys: [&'a str; THUMB_KEY_COUNT]
+   ) -> io::Result<()> {
+      let key_widths = [1.0, 1.0, 1.25, 1.0].map(|u| u * KEY_WIDTH as f64);
 
       let outer_radius = 4 * KEY_WIDTH;
       let inner_radius = outer_radius - KEY_HEIGHT;
 
-      let point = |radius, u| {
+      let point = |radius, arc| {
          let center = (4.7 * KEY_WIDTH  as f64, 7.7 * KEY_HEIGHT as f64);
          let start_angle = f64::to_radians(-105.0);
-         let arc = u * KEY_WIDTH as f64;
          let angle = start_angle + arc / inner_radius as f64;
 
          (
@@ -237,12 +241,12 @@ impl KeyLayoutWriter<'_> {
       };
 
       self.path(|builder| {
-         let end_u = key_widths.into_iter().sum();
+         let arc = key_widths.into_iter().sum();
 
          let (x, y) = point(outer_radius, 0.0);
          builder.move_to(x, y);
 
-         let (x, y) = point(outer_radius, end_u);
+         let (x, y) = point(outer_radius, arc);
          builder.arc(
             outer_radius, outer_radius,
             /* x_axis_rotation = */ 0.0,
@@ -251,7 +255,7 @@ impl KeyLayoutWriter<'_> {
             x, y
          );
 
-         let (x, y) = point(inner_radius, end_u);
+         let (x, y) = point(inner_radius, arc);
          builder.line_to(x, y);
 
          let (x, y) = point(inner_radius, 0.0);
@@ -266,19 +270,28 @@ impl KeyLayoutWriter<'_> {
          builder.close();
       })?;
 
-      key_widths.into_iter()
-         .scan(0.0, |st, u| {
-            *st += u;
+      let arcs = [0.0].into_iter()
+         .chain(key_widths.into_iter())
+         .scan(0.0, |st, w| {
+            *st += w;
             Some(*st)
-         })
+         });
+
+      keys.into_iter()
+         .zip(arcs)
          .enumerate()
-         .map(|(i, u)| {
-            let (x1, y1) = point(outer_radius, u);
-            let (x2, y2) = point(inner_radius, u);
+         .map(|(i, (key, arc))| {
+            let (x1, y1) = point(outer_radius, arc);
+            let (x2, y2) = point(inner_radius, arc);
 
-            if i >= THUMB_KEY_COUNT - 1 { return Ok(()); }
+            if i > 0 {
+               self.line(x1, y1, x2, y2)?;
+            }
 
-            self.line(x1, y1, x2, y2)
+            let (x, y) = point(outer_radius - 16, arc + 4.0);
+            self.text(x, y, key)?;
+
+            Ok(())
          })
          .collect::<io::Result<()>>()?;
 
