@@ -55,11 +55,11 @@
    <line x1="250" y1="115" x2="300" y2="115"/>
    <text x="254" y="131">X</text>
    <path d="M 183 191 A 200 200 0 0 1 417 304 L 372 324 A 150 150 0 0 0 196 240 Z"/>
-   <text x="192" y="206">Alt</text>
+   <text x="192" y="206" transform="rotate(-5.45 192 206)">Alt</text>
    <line x1="249" y1="185" x2="245" y2="235"/>
-   <text x="253" y="201">_</text>
+   <text x="253" y="201" transform="rotate(13.65 253 201)">_</text>
    <line x1="313" y1="201" x2="294" y2="247"/>
-   <text x="311" y="217">Space</text>
+   <text x="311" y="217" transform="rotate(35.13 311 217)">Space</text>
    <line x1="381" y1="248" x2="344" y2="282"/>
-   <text x="373" y="263">Backspace</text>
+   <text x="373" y="263" transform="rotate(56.62 373 263)">Backspace</text>
 </svg>

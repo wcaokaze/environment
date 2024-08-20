@@ -167,6 +167,31 @@ impl KeyLayoutWriter<'_> {
       Ok(())
    }
 
+   fn rotated_text<'a>(
+      &mut self,
+      x: usize,
+      y: usize,
+      angle: f64,
+      content: &'a str
+   ) -> io::Result<()> {
+      self.svg_writer.append_raw_element(
+         "text",
+         |writer| {
+            writer.append_attr("x", &x.to_string())?;
+            writer.append_attr("y", &y.to_string())?;
+
+            let angle_deg = angle.to_degrees();
+            writer.append_attr(
+               "transform", &format!("rotate({angle_deg:0.2} {x} {y})")
+            )?;
+
+            Ok(())
+         },
+         content
+      )?;
+      Ok(())
+   }
+
    fn path(
       &mut self,
       content: impl FnOnce(&mut PathBuilder) -> ()
@@ -224,15 +249,21 @@ impl KeyLayoutWriter<'_> {
       &mut self,
       keys: [&'a str; THUMB_KEY_COUNT]
    ) -> io::Result<()> {
+      use std::f64::consts::PI;
+
       let key_widths = [1.0, 1.0, 1.25, 1.0].map(|u| u * KEY_WIDTH as f64);
 
       let outer_radius = 4 * KEY_WIDTH;
       let inner_radius = outer_radius - KEY_HEIGHT;
 
+      let angle = |arc| {
+         let start_angle = f64::to_radians(-105.0);
+         start_angle + arc / inner_radius as f64
+      };
+
       let point = |radius, arc| {
          let center = (4.7 * KEY_WIDTH  as f64, 7.7 * KEY_HEIGHT as f64);
-         let start_angle = f64::to_radians(-105.0);
-         let angle = start_angle + arc / inner_radius as f64;
+         let angle = angle(arc);
 
          (
             (center.0 + radius as f64 * f64::cos(angle)) as usize,
@@ -279,8 +310,9 @@ impl KeyLayoutWriter<'_> {
 
       keys.into_iter()
          .zip(arcs)
+         .zip(key_widths)
          .enumerate()
-         .map(|(i, (key, arc))| {
+         .map(|(i, ((key, arc), width))| {
             let (x1, y1) = point(outer_radius, arc);
             let (x2, y2) = point(inner_radius, arc);
 
@@ -289,7 +321,8 @@ impl KeyLayoutWriter<'_> {
             }
 
             let (x, y) = point(outer_radius - 16, arc + 4.0);
-            self.text(x, y, key)?;
+            let angle = angle(arc + width / 2.0) + PI / 2.0;
+            self.rotated_text(x, y, angle, key)?;
 
             Ok(())
          })
