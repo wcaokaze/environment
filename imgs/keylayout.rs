@@ -15,6 +15,10 @@ const CANVAS_HEIGHT: usize = 400;
 const KEY_WIDTH:  usize = 50;
 const KEY_HEIGHT: usize = 50;
 
+const ALPHANUMERIC_STAGGER_RATE: [f64; ALPHANUMERIC_COL_COUNT]
+   = [1.0, 0.8, 0.3, 0.0, 0.2, 0.3];
+const THUMB_KEY_WIDTH: [f64; THUMB_KEY_COUNT] = [1.0, 1.0, 1.25, 1.0];
+
 fn main() -> io::Result<()> {
    let output = File::create("keylayout.svg")?;
    KeyLayoutWriter::write(output, |writer| {
@@ -233,10 +237,9 @@ impl KeyLayoutWriter<'_> {
       &mut self,
       keys: [[&'a str; ALPHANUMERIC_COL_COUNT]; ALPHANUMERIC_ROW_COUNT]
    ) -> io::Result<()> {
-      let col_top_positions = [1.0, 0.8, 0.3, 0.0, 0.2, 0.3];
       let keys = transpose(keys);
 
-      for (x, (column, pos)) in keys.iter().zip(col_top_positions).enumerate() {
+      for (x, (column, pos)) in keys.iter().zip(ALPHANUMERIC_STAGGER_RATE).enumerate() {
          let x = x * KEY_WIDTH;
          let y = (pos * KEY_HEIGHT as f64) as usize;
          self.alphanumeric_column(x, y, column)?;
@@ -251,7 +254,7 @@ impl KeyLayoutWriter<'_> {
    ) -> io::Result<()> {
       use std::f64::consts::PI;
 
-      let key_widths = [1.0, 1.0, 1.25, 1.0].map(|u| u * KEY_WIDTH as f64);
+      let key_widths = THUMB_KEY_WIDTH.map(|u| u * KEY_WIDTH as f64);
 
       let outer_radius = 4 * KEY_WIDTH;
       let inner_radius = outer_radius - KEY_HEIGHT;
