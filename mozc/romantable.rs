@@ -26,13 +26,29 @@ const BASIC_CHAR_TABLE: ([&'static str; 5], [(&'static str, [&'static str; 5]); 
    ]
 );
 
-const SPECIAL_CHARS: [(&'static str, &'static str); 6] = [
+const SPECIAL_CHARS: [(&'static str, &'static str); 22] = [
    ("nn",  "ん"),
    ("'",   "っ"),
    ("ltu", "っ"),
    ("lwa", "ゎ"),
    ("-",   "ー"),
    ("p",   "ー"),
+   (",",   "、"),
+   (".",   "。"),
+   ("~",   "〜"),
+   ("[",   "「"),
+   ("]",   "」"),
+   ("y-",  "〜"),
+   ("yp",  "〜"),
+   ("y.",  "…"),
+   ("y,",  "‥"),
+   ("y/",  "・"),
+   ("y[",  "『"),
+   ("y]",  "』"),
+   ("yd",  "←"),
+   ("yh",  "↓"),
+   ("yt",  "↑"),
+   ("yn",  "→"),
 ];
 
 fn main() -> io::Result<()> {
