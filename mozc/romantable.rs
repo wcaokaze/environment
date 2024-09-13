@@ -54,6 +54,7 @@ fn main() -> io::Result<()> {
 
    basic_characters(&mut roman_map);
    nasal(&mut roman_map);
+   diphthong(&mut roman_map);
    special_characters(&mut roman_map);
 
    let mut roman_map = roman_map.iter().collect::<Vec<_>>();
@@ -97,6 +98,30 @@ fn nasal(map: &mut HashMap<String, String>) {
 
          let mut char = char.to_string();
          char.push_str("ん");
+
+         map.insert(stroke, char);
+      }
+   }
+}
+
+fn diphthong(map: &mut HashMap<String, String>) {
+   let second_strokes = [
+      ("'", 0, "い"),
+      ("p", 2, "う"),
+      ("y", 2, "い"),
+      (".", 3, "い"),
+      (",", 4, "う"),
+   ];
+
+   for (first_stroke, base_chars) in &BASIC_CHAR_TABLE {
+      for (second_stroke, base_char_idx, additional_char) in second_strokes {
+         let mut stroke = String::new();
+         stroke.push_str(first_stroke);
+         stroke.push_str(second_stroke);
+
+         let mut char = String::new();
+         char.push_str(base_chars[base_char_idx]);
+         char.push_str(additional_char);
 
          map.insert(stroke, char);
       }
