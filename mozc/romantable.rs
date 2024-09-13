@@ -1,5 +1,6 @@
 #!/usr/bin/env -S cargo +nightly -Zscript
 
+use std::collections::HashMap;
 use std::fs::File;
 use std::io::{self, BufWriter, Write};
 
@@ -52,38 +53,43 @@ const SPECIAL_CHARS: [(&'static str, &'static str); 22] = [
 ];
 
 fn main() -> io::Result<()> {
+   let mut roman_map = HashMap::new();
+
+   basic_characters(&mut roman_map);
+   special_characters(&mut roman_map);
+
+   let mut roman_map = roman_map.iter().collect::<Vec<_>>();
+   roman_map.sort();
+
    let output = File::create("romantable.txt")?;
    let mut output = BufWriter::new(output);
 
-   basic_characters(&mut output)?;
-   special_characters(&mut output)?;
-
-   Ok(())
-}
-
-fn basic_characters(output: &mut dyn Write) -> io::Result<()> {
-   let (second_strokes, table) = &BASIC_CHAR_TABLE;
-
-   for (first_stroke, chars) in table {
-      for (second_stroke, char) in second_strokes.iter().zip(chars.iter()) {
-         output.write(first_stroke.as_bytes())?;
-         output.write(second_stroke.as_bytes())?;
-         output.write(b"\t")?;
-         output.write(char.as_bytes())?;
-         output.write(b"\n")?;
-      }
-   }
-
-   Ok(())
-}
-
-fn special_characters(output: &mut dyn Write) -> io::Result<()> {
-   for (strokes, char) in &SPECIAL_CHARS {
-      output.write(strokes.as_bytes())?;
+   for (stroke, char) in roman_map {
+      output.write(stroke.as_bytes())?;
       output.write(b"\t")?;
       output.write(char.as_bytes())?;
       output.write(b"\n")?;
    }
 
    Ok(())
+}
+
+fn basic_characters(map: &mut HashMap<String, String>) {
+   let (second_strokes, table) = &BASIC_CHAR_TABLE;
+
+   for (first_stroke, chars) in table {
+      for (second_stroke, char) in second_strokes.iter().zip(chars.iter()) {
+         let mut stroke = String::new();
+         stroke.push_str(first_stroke);
+         stroke.push_str(second_stroke);
+
+         map.insert(stroke, char.to_string());
+      }
+   }
+}
+
+fn special_characters(map: &mut HashMap<String, String>) {
+   for (stroke, char) in &SPECIAL_CHARS {
+      map.insert(stroke.to_string(), char.to_string());
+   }
 }
