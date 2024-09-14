@@ -26,11 +26,13 @@ const BASIC_CHAR_TABLE: [(&'static str, [&'static str; 5]); 19] = [
    ("vv", ["ゔぁ", "ゔぃ", "ゔ",   "ゔぇ", "ゔぉ"]),
 ];
 
-const SPECIAL_CHARS: [(&'static str, &'static str); 22] = [
+const SPECIAL_CHARS: [(&'static str, &'static str); 24] = [
    ("nn",  "ん"),
    ("'",   "っ"),
    ("ltu", "っ"),
    ("lwa", "ゎ"),
+   ("lca", "ヵ"),
+   ("lce", "ヶ"),
    ("-",   "ー"),
    ("p",   "ー"),
    (",",   "、"),

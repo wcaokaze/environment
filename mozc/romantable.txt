@@ -252,6 +252,8 @@ l'	ぁい
 l,	ぉう
 l.	ぇい
 la	ぁ
+lca	ヵ
+lce	ヶ
 le	ぇ
 li	ぃ
 lj	ぇん
