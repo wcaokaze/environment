@@ -52,10 +52,10 @@ const SPECIAL_CHARS: [(&'static str, &'static str); 22] = [
 fn main() -> io::Result<()> {
    let mut roman_map = HashMap::new();
 
-   basic_characters(&mut roman_map);
-   nasal(&mut roman_map);
-   diphthong(&mut roman_map);
-   special_characters(&mut roman_map);
+   basic_characters(&mut roman_map, &BASIC_CHAR_TABLE);
+   nasal(&mut roman_map, &BASIC_CHAR_TABLE);
+   diphthong(&mut roman_map, &BASIC_CHAR_TABLE);
+   special_characters(&mut roman_map, &SPECIAL_CHARS);
 
    let mut roman_map = roman_map.iter().collect::<Vec<_>>();
    roman_map.sort();
@@ -73,24 +73,24 @@ fn main() -> io::Result<()> {
    Ok(())
 }
 
-fn basic_characters(map: &mut HashMap<String, String>) {
+fn basic_characters(dest: &mut HashMap<String, String>, table: &[(&str, [&str; 5])]) {
    let second_strokes = ["a", "i", "u", "e", "o"];
 
-   for (first_stroke, chars) in &BASIC_CHAR_TABLE {
+   for (first_stroke, chars) in table {
       for (second_stroke, char) in second_strokes.iter().zip(chars.iter()) {
          let mut stroke = String::new();
          stroke.push_str(first_stroke);
          stroke.push_str(second_stroke);
 
-         map.insert(stroke, char.to_string());
+         dest.insert(stroke, char.to_string());
       }
    }
 }
 
-fn nasal(map: &mut HashMap<String, String>) {
+fn nasal(dest: &mut HashMap<String, String>, table: &[(&str, [&str; 5])]) {
    let second_strokes = ["z", "x", "k", "j", "q"];
 
-   for (first_stroke, chars) in &BASIC_CHAR_TABLE {
+   for (first_stroke, chars) in table {
       for (second_stroke, char) in second_strokes.iter().zip(chars.iter()) {
          let mut stroke = String::new();
          stroke.push_str(first_stroke);
@@ -99,12 +99,12 @@ fn nasal(map: &mut HashMap<String, String>) {
          let mut char = char.to_string();
          char.push_str("ん");
 
-         map.insert(stroke, char);
+         dest.insert(stroke, char);
       }
    }
 }
 
-fn diphthong(map: &mut HashMap<String, String>) {
+fn diphthong(dest: &mut HashMap<String, String>, table: &[(&str, [&str; 5])]) {
    let second_strokes = [
       ("'", 0, "い"),
       ("p", 2, "う"),
@@ -113,7 +113,7 @@ fn diphthong(map: &mut HashMap<String, String>) {
       (",", 4, "う"),
    ];
 
-   for (first_stroke, base_chars) in &BASIC_CHAR_TABLE {
+   for (first_stroke, base_chars) in table {
       for (second_stroke, base_char_idx, additional_char) in second_strokes {
          let mut stroke = String::new();
          stroke.push_str(first_stroke);
@@ -123,13 +123,13 @@ fn diphthong(map: &mut HashMap<String, String>) {
          char.push_str(base_chars[base_char_idx]);
          char.push_str(additional_char);
 
-         map.insert(stroke, char);
+         dest.insert(stroke, char);
       }
    }
 }
 
-fn special_characters(map: &mut HashMap<String, String>) {
-   for (stroke, char) in &SPECIAL_CHARS {
-      map.insert(stroke.to_string(), char.to_string());
+fn special_characters(dest: &mut HashMap<String, String>, table: &[(&str, &str)]) {
+   for (stroke, char) in table {
+      dest.insert(stroke.to_string(), char.to_string());
    }
 }
