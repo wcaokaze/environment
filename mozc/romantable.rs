@@ -61,6 +61,12 @@ fn main() -> io::Result<()> {
    basic_characters(&mut roman_map, &basic_char_table);
    nasal(&mut roman_map, &basic_char_table);
    diphthong(&mut roman_map, &basic_char_table);
+
+   let palatalized_table = create_palatalized_table(&basic_char_table);
+   basic_characters(&mut roman_map, &palatalized_table);
+   nasal(&mut roman_map, &palatalized_table);
+   diphthong(&mut roman_map, &palatalized_table);
+
    special_characters(&mut roman_map, &special_chars);
 
    let mut roman_map = roman_map.iter().collect::<Vec<_>>();
@@ -77,6 +83,45 @@ fn main() -> io::Result<()> {
    }
 
    Ok(())
+}
+
+fn create_palatalized_table(
+   table: &[(String, [String; 5])]
+) -> Vec<(String, [String; 5])> {
+   let second_strokes = [
+      ("c", "h"),
+      ("s", "h"),
+      ("t", "h"),
+      ("n", "h"),
+      ("h", "n"),
+      ("m", "n"),
+      ("r", "h"),
+      ("g", "n"),
+      (";", "h"),
+      ("d", "n"),
+      ("b", "n"),
+      ("f", "n"),
+   ];
+
+   table.iter()
+      .flat_map(|(first_stroke, chars)| {
+         let (first_stroke, second_stroke)
+            = second_strokes.iter().find(|(f, _)| f == first_stroke)?;
+
+         let palatalized_first_stroke = format!("{first_stroke}{second_stroke}");
+
+         let first_char = &chars[1];
+         let palatalized_table = [
+            format!("{first_char}ゃ"),
+            format!("{first_char}ぃ"),
+            format!("{first_char}ゅ"),
+            format!("{first_char}ぇ"),
+            format!("{first_char}ょ"),
+         ];
+
+         Some((palatalized_first_stroke, palatalized_table))
+      })
+      .collect()
 }
 
 fn basic_characters(
