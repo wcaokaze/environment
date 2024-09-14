@@ -4,7 +4,7 @@ use std::collections::HashMap;
 use std::fs::File;
 use std::io::{self, BufWriter, Write};
 
-const BASIC_CHAR_TABLE: [(&'static str, [&'static str; 5]); 19] = [
+const BASIC_CHAR_TABLE: [(&'static str, [&'static str; 5]); 26] = [
    ( "",  ["あ",   "い",   "う",   "え",   "お"  ]),
    ("c",  ["か",   "き",   "く",   "け",   "こ"  ]),
    ("s",  ["さ",   "し",   "す",   "せ",   "そ"  ]),
@@ -24,6 +24,13 @@ const BASIC_CHAR_TABLE: [(&'static str, [&'static str; 5]); 19] = [
    ("lv", ["ゃ",   "ぃ",   "ゅ",   "ぃぇ", "ょ"  ]),
    ("hh", ["ふぁ", "ふぃ", "ふぅ", "ふぇ", "ふぉ"]),
    ("vv", ["ゔぁ", "ゔぃ", "ゔ",   "ゔぇ", "ゔぉ"]),
+   ("cn", ["くぁ", "くぃ", "くぅ", "くぇ", "くぉ"]),
+   ("tn", ["てゃ", "てぃ", "てゅ", "てぇ", "てょ"]),
+   ("ts", ["とぁ", "とぃ", "とぅ", "とぇ", "とぉ"]),
+   ("wh", ["うぁ", "うぃ", "う",   "うぇ", "うぉ"]),
+   ("gh", ["ぐぁ", "ぐぃ", "ぐぅ", "ぐぇ", "ぐぉ"]),
+   ("dh", ["でゃ", "でぃ", "でゅ", "でぇ", "でょ"]),
+   ("ds", ["どぁ", "どぃ", "どぅ", "どぇ", "どぉ"]),
 ];
 
 const SPECIAL_CHARS: [(&'static str, &'static str); 24] = [
