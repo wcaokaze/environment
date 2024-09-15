@@ -256,18 +256,18 @@ fn palatalized_diphthong(
 
       let base_second_stroke = &base_stroke[1..];
       if base_second_stroke == "h" {
-         insert("g", chars[2].clone() + "う");
-         insert("m", chars[4].clone() + "う");
-         insert("r", chars[2].clone() + "く");
-         insert("v", chars[4].clone() + "く");
+         insert("g", chars[4].clone() + "う");
+         insert("m", chars[2].clone() + "う");
+         insert("r", chars[4].clone() + "く");
+         insert("v", chars[2].clone() + "く");
       } else if base_second_stroke == "n" {
-         insert("r", chars[2].clone() + "う");
-         insert("v", chars[4].clone() + "う");
-         insert("g", chars[2].clone() + "く");
-         insert("m", chars[4].clone() + "く");
+         insert("r", chars[4].clone() + "う");
+         insert("v", chars[2].clone() + "う");
+         insert("g", chars[4].clone() + "く");
+         insert("m", chars[2].clone() + "く");
       }
-      insert("c", chars[2].clone() + "つ");
-      insert("w", chars[4].clone() + "つ");
+      insert("c", chars[4].clone() + "つ");
+      insert("w", chars[2].clone() + "つ");
    }
 }
 
