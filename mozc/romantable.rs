@@ -72,11 +72,13 @@ fn main() -> io::Result<()> {
    basic_characters(&mut roman_map, &basic_char_table);
    nasal(&mut roman_map, &basic_char_table);
    diphthong(&mut roman_map, &basic_char_table);
+   advanced_diphthong(&mut roman_map, &basic_char_table);
 
    let palatalized_table = create_palatalized_table(&basic_char_table);
    basic_characters(&mut roman_map, &palatalized_table);
    nasal(&mut roman_map, &palatalized_table);
    diphthong(&mut roman_map, &palatalized_table);
+   advanced_diphthong(&mut roman_map, &palatalized_table);
    palatalized_diphthong(&mut roman_map, &palatalized_table);
 
    special_characters(&mut roman_map, &special_chars);
@@ -186,10 +188,47 @@ fn diphthong(
    ];
 
    for (first_stroke, base_chars) in table {
+      if first_stroke.is_empty() { continue; }
+
       for (second_stroke, base_char_idx, additional_char) in second_strokes {
          let mut stroke = String::new();
          stroke.push_str(first_stroke);
          stroke.push_str(second_stroke);
+
+         let mut char = String::new();
+         char.push_str(&base_chars[base_char_idx]);
+         char.push_str(additional_char);
+
+         dest.insert(stroke, char);
+      }
+   }
+}
+
+fn advanced_diphthong(
+   dest: &mut HashMap<String, String>,
+   table: &[(String, [String; 5])]
+) {
+   let third_strokes = [
+      ("a", 0, "つ"),
+      ("i", 1, "つ"),
+      ("u", 2, "つ"),
+      ("e", 3, "つ"),
+      ("o", 4, "つ"),
+      ("'", 0, "く"),
+      ("y", 1, "く"),
+      ("p", 2, "く"),
+      (".", 3, "き"),
+      (",", 4, "く"),
+   ];
+
+   for (first_stroke, base_chars) in table {
+      if first_stroke.is_empty() { continue; }
+
+      for (third_stroke, base_char_idx, additional_char) in third_strokes {
+         let mut stroke = String::new();
+         stroke.push_str(first_stroke);
+         stroke.push_str("t");
+         stroke.push_str(third_stroke);
 
          let mut char = String::new();
          char.push_str(&base_chars[base_char_idx]);
