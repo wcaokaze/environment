@@ -246,26 +246,28 @@ fn palatalized_diphthong(
    for (base_stroke, chars) in table {
       let Some(first_stroke) = base_stroke.chars().nth(0) else { continue; };
 
-      let mut insert = |second_stroke, first_char| {
+      let mut insert = |second_stroke, char| {
          let mut stroke = String::new();
          stroke.push(first_stroke);
          stroke.push_str(second_stroke);
-
-         let mut char = String::new();
-         char.push_str(first_char);
-         char.push_str("う");
 
          dest.insert(stroke, char);
       };
 
       let base_second_stroke = &base_stroke[1..];
       if base_second_stroke == "h" {
-         insert("g", &chars[2]);
-         insert("m", &chars[4]);
+         insert("g", chars[2].clone() + "う");
+         insert("m", chars[4].clone() + "う");
+         insert("r", chars[2].clone() + "く");
+         insert("v", chars[4].clone() + "く");
       } else if base_second_stroke == "n" {
-         insert("r", &chars[2]);
-         insert("v", &chars[4]);
+         insert("r", chars[2].clone() + "う");
+         insert("v", chars[4].clone() + "う");
+         insert("g", chars[2].clone() + "く");
+         insert("m", chars[4].clone() + "く");
       }
+      insert("c", chars[2].clone() + "つ");
+      insert("w", chars[4].clone() + "つ");
    }
 }
 
