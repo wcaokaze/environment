@@ -73,12 +73,14 @@ fn main() -> io::Result<()> {
    nasal(&mut roman_map, &basic_char_table);
    diphthong(&mut roman_map, &basic_char_table);
    advanced_diphthong(&mut roman_map, &basic_char_table);
+   gemination(&mut roman_map, &basic_char_table);
 
    let palatalized_table = create_palatalized_table(&basic_char_table);
    basic_characters(&mut roman_map, &palatalized_table);
    nasal(&mut roman_map, &palatalized_table);
    diphthong(&mut roman_map, &palatalized_table);
    advanced_diphthong(&mut roman_map, &palatalized_table);
+   gemination(&mut roman_map, &palatalized_table);
    palatalized_diphthong(&mut roman_map, &palatalized_table);
 
    special_characters(&mut roman_map, &special_chars);
@@ -233,6 +235,29 @@ fn advanced_diphthong(
          let mut char = String::new();
          char.push_str(&base_chars[base_char_idx]);
          char.push_str(additional_char);
+
+         dest.insert(stroke, char);
+      }
+   }
+}
+
+fn gemination(
+   dest: &mut HashMap<String, String>,
+   table: &[(String, [String; 5])]
+) {
+   let third_strokes = ["z", "x", "k", "j", "q"];
+
+   for (first_stroke, chars) in table {
+      if first_stroke.is_empty() { continue; }
+
+      for (third_stroke, char) in third_strokes.iter().zip(chars.iter()) {
+         let mut stroke = String::new();
+         stroke.push_str(first_stroke);
+         stroke.push_str("t");
+         stroke.push_str(third_stroke);
+
+         let mut char = String::from(char);
+         char.push_str("っ");
 
          dest.insert(stroke, char);
       }
