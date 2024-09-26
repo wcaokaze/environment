@@ -101,6 +101,8 @@ fn main() -> io::Result<()> {
    Ok(())
 }
 
+/// `("c", ["か", "き", "く", "け", "こ"])` を
+/// `("cy", ["きゃ", "きぃ", "きゅ", "きぇ", "きょ"])` に変換する
 fn create_palatalized_table(
    table: &[(String, [String; 5])]
 ) -> Vec<(String, [String; 5])> {
@@ -140,6 +142,8 @@ fn create_palatalized_table(
       .collect()
 }
 
+/// 通常マッピングを生成
+/// `("c", ["か", "き", "く", "け", "こ"])` → かきくけこ
 fn basic_characters(
    dest: &mut HashMap<String, String>,
    table: &[(String, [String; 5])]
@@ -157,6 +161,8 @@ fn basic_characters(
    }
 }
 
+/// 撥音付きのマッピングを生成
+/// `("c", ["か", "き", "く", "け", "こ"])` → かんきんくんけんこん
 fn nasal(
    dest: &mut HashMap<String, String>,
    table: &[(String, [String; 5])]
@@ -177,6 +183,8 @@ fn nasal(
    }
 }
 
+/// 二重母音のマッピングを生成
+/// `("c", ["か", "き", "く", "け", "こ"])` → かいこうけいくうくい
 fn diphthong(
    dest: &mut HashMap<String, String>,
    table: &[(String, [String; 5])]
@@ -206,6 +214,8 @@ fn diphthong(
    }
 }
 
+/// -つ, -く のマッピングを生成
+/// `("c", ["か", "き", "く", "け", "こ"])` → かつきつくつけつこつかくきくくくけきこく
 fn advanced_diphthong(
    dest: &mut HashMap<String, String>,
    table: &[(String, [String; 5])]
@@ -241,6 +251,8 @@ fn advanced_diphthong(
    }
 }
 
+/// 促音付きのマッピングを生成
+/// `("c", ["か", "き", "く", "け", "こ"])` → かっきっくっけっこっ
 fn gemination(
    dest: &mut HashMap<String, String>,
    table: &[(String, [String; 5])]
@@ -264,6 +276,8 @@ fn gemination(
    }
 }
 
+/// -ゅう, -ょう, -ゅつ, -ょつ, -ゅく, -ょく
+/// `("c", ["か", "き", "く", "け", "こ"])` → きゅうきょうきゅつきょつきゅくきょく
 fn palatalized_diphthong(
    dest: &mut HashMap<String, String>,
    table: &[(String, [String; 5])]
