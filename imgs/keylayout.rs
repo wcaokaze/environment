@@ -9,7 +9,7 @@ const ALPHANUMERIC_COL_COUNT: usize = 6;
 const ALPHANUMERIC_ROW_COUNT: usize = 3;
 const THUMB_KEY_COUNT: usize = 4;
 
-const CANVAS_WIDTH:  usize = 500;
+const CANVAS_WIDTH:  usize = 1000;
 const CANVAS_HEIGHT: usize = 400;
 
 const KEY_WIDTH:  usize = 50;
@@ -30,8 +30,18 @@ fn main() -> io::Result<()> {
 
       let left_thumb_keys = ["Alt", "_", "Space", "Backspace"];
 
+      let right_alphanumeric_keys = [
+         ["F", "G", "C", "R", "L", "="],
+         ["D", "H", "T", "N", "S", "["],
+         ["B", "M", "W", "V", ";", "-"]
+      ];
+
+      let right_thumb_keys = ["Ctrl+[", "Enter", "F13", "Super"];
+
       writer.left_alphanumeric(left_alphanumeric_keys)?;
       writer.left_thumb(left_thumb_keys)?;
+      writer.right_alphanumeric(right_alphanumeric_keys)?;
+      writer.right_thumb(right_thumb_keys)?;
       Ok(())
    })?;
 
@@ -233,44 +243,67 @@ impl KeyLayoutWriter<'_> {
       Ok(())
    }
 
-   fn left_alphanumeric<'a>(
+   fn alphanumeric<'a>(
       &mut self,
-      keys: [[&'a str; ALPHANUMERIC_COL_COUNT]; ALPHANUMERIC_ROW_COUNT]
+      keys: [[&'a str; ALPHANUMERIC_COL_COUNT]; ALPHANUMERIC_ROW_COUNT],
+      stagger_rate: [f64; ALPHANUMERIC_COL_COUNT],
+      left_top: (usize, usize)
    ) -> io::Result<()> {
       let keys = transpose(keys);
 
-      for (x, (column, pos)) in keys.iter().zip(ALPHANUMERIC_STAGGER_RATE).enumerate() {
-         let x = x * KEY_WIDTH;
-         let y = (pos * KEY_HEIGHT as f64) as usize;
+      for (x, (column, pos)) in keys.iter().zip(stagger_rate).enumerate() {
+         let x = left_top.0 + x * KEY_WIDTH;
+         let y = left_top.1 + (pos * KEY_HEIGHT as f64) as usize;
          self.alphanumeric_column(x, y, column)?;
       }
 
       Ok(())
    }
 
-   fn left_thumb<'a>(
+   fn left_alphanumeric<'a>(
       &mut self,
-      keys: [&'a str; THUMB_KEY_COUNT]
+      keys: [[&'a str; ALPHANUMERIC_COL_COUNT]; ALPHANUMERIC_ROW_COUNT]
+   ) -> io::Result<()> {
+      self.alphanumeric(keys, ALPHANUMERIC_STAGGER_RATE, (0, 0))?;
+      Ok(())
+   }
+
+   fn right_alphanumeric<'a>(
+      &mut self,
+      keys: [[&'a str; ALPHANUMERIC_COL_COUNT]; ALPHANUMERIC_ROW_COUNT]
+   ) -> io::Result<()> {
+      let x = CANVAS_WIDTH - ALPHANUMERIC_COL_COUNT * KEY_WIDTH;
+      let mut reversed_stagger_rate = ALPHANUMERIC_STAGGER_RATE;
+      reversed_stagger_rate.reverse();
+      self.alphanumeric(keys, reversed_stagger_rate, (x, 0))?;
+      Ok(())
+   }
+
+   fn thumb<'a>(
+      &mut self,
+      keys: [&'a str; THUMB_KEY_COUNT],
+      key_widths: [f64; THUMB_KEY_COUNT],
+      arc_center: (usize, usize),
+      arc_radius: f64,
+      start_angle: f64
    ) -> io::Result<()> {
       use std::f64::consts::PI;
 
-      let key_widths = THUMB_KEY_WIDTH.map(|u| u * KEY_WIDTH as f64);
+      let key_widths = key_widths.map(|u| u * KEY_WIDTH as f64);
 
-      let outer_radius = 4 * KEY_WIDTH;
-      let inner_radius = outer_radius - KEY_HEIGHT;
+      let outer_radius = arc_radius;
+      let inner_radius = outer_radius - KEY_HEIGHT as f64;
 
       let angle = |arc| {
-         let start_angle = f64::to_radians(-105.0);
          start_angle + arc / inner_radius as f64
       };
 
       let point = |radius, arc| {
-         let center = (4.7 * KEY_WIDTH  as f64, 7.7 * KEY_HEIGHT as f64);
          let angle = angle(arc);
 
          (
-            (center.0 + radius as f64 * f64::cos(angle)) as usize,
-            (center.1 + radius as f64 * f64::sin(angle)) as usize
+            (arc_center.0 as f64 + radius * f64::cos(angle)) as usize,
+            (arc_center.1 as f64 + radius * f64::sin(angle)) as usize
          )
       };
 
@@ -282,7 +315,7 @@ impl KeyLayoutWriter<'_> {
 
          let (x, y) = point(outer_radius, arc);
          builder.arc(
-            outer_radius, outer_radius,
+            outer_radius as usize, outer_radius as usize,
             /* x_axis_rotation = */ 0.0,
             /* large_arc_flag = */ false,
             /* sweep_flag = */ true,
@@ -294,7 +327,7 @@ impl KeyLayoutWriter<'_> {
 
          let (x, y) = point(inner_radius, 0.0);
          builder.arc(
-            inner_radius, inner_radius,
+            inner_radius as usize, inner_radius as usize,
             /* x_axis_rotation = */ 0.0,
             /* large_arc_flag = */ false,
             /* sweep_flag = */ false,
@@ -323,7 +356,7 @@ impl KeyLayoutWriter<'_> {
                self.line(x1, y1, x2, y2)?;
             }
 
-            let (x, y) = point(outer_radius - 16, arc + 4.0);
+            let (x, y) = point(outer_radius - 16.0, arc + 4.0);
             let angle = angle(arc + width / 2.0) + PI / 2.0;
             self.rotated_text(x, y, angle, key)?;
 
@@ -331,6 +364,42 @@ impl KeyLayoutWriter<'_> {
          })
          .collect::<io::Result<()>>()?;
 
+      Ok(())
+   }
+
+   fn left_thumb<'a>(
+      &mut self,
+      keys: [&'a str; THUMB_KEY_COUNT]
+   ) -> io::Result<()> {
+      let center = (
+         (4.7 * KEY_WIDTH  as f64) as usize,
+         (7.7 * KEY_HEIGHT as f64) as usize
+      );
+      let start_angle = f64::to_radians(-90.0 - 15.0);
+      let arc_radius = 4.0 * KEY_WIDTH as f64;
+
+      self.thumb(keys, THUMB_KEY_WIDTH, center, arc_radius, start_angle)?;
+      Ok(())
+   }
+
+   fn right_thumb<'a>(
+      &mut self,
+      keys: [&'a str; THUMB_KEY_COUNT]
+   ) -> io::Result<()> {
+      let mut reversed_thumb_key_width = THUMB_KEY_WIDTH;
+      reversed_thumb_key_width.reverse();
+
+      let center = (
+         CANVAS_WIDTH - (4.7 * KEY_WIDTH  as f64) as usize,
+         (7.7 * KEY_HEIGHT as f64) as usize
+      );
+      let arc_radius = 4.0 * KEY_WIDTH as f64;
+
+      let arc_length = reversed_thumb_key_width.iter().sum::<f64>() * KEY_WIDTH as f64;
+      let arc_angle = arc_length / (arc_radius - KEY_HEIGHT as f64);
+      let start_angle = f64::to_radians(-90.0 + 15.0) - arc_angle;
+
+      self.thumb(keys, reversed_thumb_key_width, center, arc_radius, start_angle)?;
       Ok(())
    }
 }
