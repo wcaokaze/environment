@@ -9,8 +9,8 @@ const ALPHANUMERIC_COL_COUNT: usize = 6;
 const ALPHANUMERIC_ROW_COUNT: usize = 3;
 const THUMB_KEY_COUNT: usize = 4;
 
-const CANVAS_WIDTH:  usize = 1000;
-const CANVAS_HEIGHT: usize = 400;
+const CANVAS_WIDTH:  usize = 900;
+const CANVAS_HEIGHT: usize = 340;
 
 const KEY_WIDTH:  usize = 50;
 const KEY_HEIGHT: usize = 50;
@@ -264,7 +264,7 @@ impl KeyLayoutWriter<'_> {
       &mut self,
       keys: [[&'a str; ALPHANUMERIC_COL_COUNT]; ALPHANUMERIC_ROW_COUNT]
    ) -> io::Result<()> {
-      self.alphanumeric(keys, ALPHANUMERIC_STAGGER_RATE, (0, 0))?;
+      self.alphanumeric(keys, ALPHANUMERIC_STAGGER_RATE, (10, 10))?;
       Ok(())
    }
 
@@ -275,7 +275,7 @@ impl KeyLayoutWriter<'_> {
       let x = CANVAS_WIDTH - ALPHANUMERIC_COL_COUNT * KEY_WIDTH;
       let mut reversed_stagger_rate = ALPHANUMERIC_STAGGER_RATE;
       reversed_stagger_rate.reverse();
-      self.alphanumeric(keys, reversed_stagger_rate, (x, 0))?;
+      self.alphanumeric(keys, reversed_stagger_rate, (x - 10, 10))?;
       Ok(())
    }
 
@@ -372,8 +372,8 @@ impl KeyLayoutWriter<'_> {
       keys: [&'a str; THUMB_KEY_COUNT]
    ) -> io::Result<()> {
       let center = (
-         (4.7 * KEY_WIDTH  as f64) as usize,
-         (7.7 * KEY_HEIGHT as f64) as usize
+         (4.8 * KEY_WIDTH  as f64) as usize,
+         (7.8 * KEY_HEIGHT as f64) as usize
       );
       let start_angle = f64::to_radians(-90.0 - 15.0);
       let arc_radius = 4.0 * KEY_WIDTH as f64;
@@ -390,8 +390,8 @@ impl KeyLayoutWriter<'_> {
       reversed_thumb_key_width.reverse();
 
       let center = (
-         CANVAS_WIDTH - (4.7 * KEY_WIDTH  as f64) as usize,
-         (7.7 * KEY_HEIGHT as f64) as usize
+         CANVAS_WIDTH - (4.8 * KEY_WIDTH  as f64) as usize,
+         (7.8 * KEY_HEIGHT as f64) as usize
       );
       let arc_radius = 4.0 * KEY_WIDTH as f64;
 
