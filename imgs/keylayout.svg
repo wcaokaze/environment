@@ -16,6 +16,9 @@
          font-size: 12px;
          fill: black;
       }
+      .oneshot {
+         fill: dodgerblue;
+      }
    </style>
    <rect width="900" height="340" style="fill: white;"/>
    <rect x="10" y="60" width="50" height="150"/>
@@ -29,7 +32,7 @@
    <line x1="60" y1="100" x2="110" y2="100"/>
    <text x="64" y="116">A</text>
    <line x1="60" y1="150" x2="110" y2="150"/>
-   <text x="64" y="166">Z</text>
+   <text x="64" y="166" class="oneshot">Z</text>
    <rect x="110" y="25" width="50" height="150"/>
    <text x="114" y="41">,</text>
    <line x1="110" y1="75" x2="160" y2="75"/>
@@ -99,11 +102,11 @@
    <line x1="840" y1="160" x2="890" y2="160"/>
    <text x="844" y="176">-</text>
    <path d="M 477 309 A 200 200 0 0 1 711 196 L 698 245 A 150 150 0 0 0 522 329 Z"/>
-   <text x="493" y="311" transform="rotate(-56.62 493 311)">Ctrl+[</text>
+   <text x="493" y="311" transform="rotate(-56.62 493 311)" class="oneshot">Ctrl+[</text>
    <line x1="513" y1="253" x2="550" y2="287"/>
-   <text x="528" y="261" transform="rotate(-35.13 528 261)">Enter</text>
+   <text x="528" y="261" transform="rotate(-35.13 528 261)" class="oneshot">Enter</text>
    <line x1="581" y1="206" x2="600" y2="252"/>
-   <text x="592" y="219" transform="rotate(-13.65 592 219)">F13</text>
+   <text x="592" y="219" transform="rotate(-13.65 592 219)" class="oneshot">F13</text>
    <line x1="645" y1="190" x2="649" y2="240"/>
    <text x="651" y="206" transform="rotate(5.45 651 206)">Super</text>
 </svg>

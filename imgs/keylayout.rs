@@ -22,21 +22,23 @@ const THUMB_KEY_WIDTH: [f64; THUMB_KEY_COUNT] = [1.0, 1.0, 1.25, 1.0];
 fn main() -> io::Result<()> {
    let output = File::create("keylayout.svg")?;
    KeyLayoutWriter::write(output, |writer| {
+      use crate::Key::{Normal as N, Oneshot as O};
+
       let left_alphanumeric_keys = [
-         [  "Tab", "'", ",", ".", "P", "Y"],
-         [ "Ctrl", "A", "O", "E", "U", "I"],
-         ["Shift", "Z", "Q", "J", "K", "X"]
+         [N(  "Tab"), N("'"), N(","), N("."), N("P"), N("Y")],
+         [N( "Ctrl"), N("A"), N("O"), N("E"), N("U"), N("I")],
+         [N("Shift"), O("Z"), N("Q"), N("J"), N("K"), N("X")]
       ];
 
-      let left_thumb_keys = ["Alt", "_", "Space", "Backspace"];
+      let left_thumb_keys = [N("Alt"), N("_"), N("Space"), N("Backspace")];
 
       let right_alphanumeric_keys = [
-         ["F", "G", "C", "R", "L", "="],
-         ["D", "H", "T", "N", "S", "["],
-         ["B", "M", "W", "V", ";", "-"]
+         [N("F"), N("G"), N("C"), N("R"), N("L"), N("=")],
+         [N("D"), N("H"), N("T"), N("N"), N("S"), N("[")],
+         [N("B"), N("M"), N("W"), N("V"), N(";"), N("-")]
       ];
 
-      let right_thumb_keys = ["Ctrl+[", "Enter", "F13", "Super"];
+      let right_thumb_keys = [O("Ctrl+["), O("Enter"), O("F13"), N("Super")];
 
       writer.left_alphanumeric(left_alphanumeric_keys)?;
       writer.left_thumb(left_thumb_keys)?;
@@ -58,6 +60,28 @@ fn transpose<T: Copy, const X: usize, const Y: usize>(m: [[T; X]; Y]) -> [[T; Y]
    }
 
    unsafe { transposed.map(|row| row.map(|t| t.assume_init())) }
+}
+
+#[derive(Copy, Clone)]
+enum Key {
+   Normal(&'static str),
+   Oneshot(&'static str),
+}
+
+impl Key {
+   fn text(&self) -> &str {
+      match &self {
+         Key::Normal(text) => text,
+         Key::Oneshot(text) => text,
+      }
+   }
+
+   fn class(&self) -> Option<&str> {
+      match &self {
+         Key::Normal(_) => None,
+         Key::Oneshot(_) => Some("oneshot"),
+      }
+   }
 }
 
 struct KeyLayoutWriter<'svg> {
@@ -107,6 +131,10 @@ impl KeyLayoutWriter<'_> {
                writer.append_style("text", |writer| {
                   writer.append_prop("font-size", "12px")?;
                   writer.append_prop("fill", "black")?;
+                  Ok(())
+               })?;
+               writer.append_style(".oneshot", |writer| {
+                  writer.append_prop("fill", "dodgerblue")?;
                   Ok(())
                })?;
                Ok(())
@@ -163,17 +191,21 @@ impl KeyLayoutWriter<'_> {
       Ok(())
    }
 
-   fn text<'a>(
+   fn text(
       &mut self,
       x: usize,
       y: usize,
-      content: &'a str
+      class: Option<&str>,
+      content: &str
    ) -> io::Result<()> {
       self.svg_writer.append_raw_element(
          "text",
          |writer| {
             writer.append_attr("x", &x.to_string())?;
             writer.append_attr("y", &y.to_string())?;
+            if let Some(class) = class {
+               writer.append_attr("class", class)?;
+            }
             Ok(())
          },
          content
@@ -186,6 +218,7 @@ impl KeyLayoutWriter<'_> {
       x: usize,
       y: usize,
       angle: f64,
+      class: Option<&str>,
       content: &'a str
    ) -> io::Result<()> {
       self.svg_writer.append_raw_element(
@@ -198,6 +231,10 @@ impl KeyLayoutWriter<'_> {
             writer.append_attr(
                "transform", &format!("rotate({angle_deg:0.2} {x} {y})")
             )?;
+
+            if let Some(class) = class {
+               writer.append_attr("class", class)?;
+            }
 
             Ok(())
          },
@@ -220,11 +257,11 @@ impl KeyLayoutWriter<'_> {
       Ok(())
    }
 
-   fn alphanumeric_column<'a, const N: usize>(
+   fn alphanumeric_column<const N: usize>(
       &mut self,
       x: usize,
       y: usize,
-      keys: &[&'a str; N]
+      keys: &[Key; N]
    ) -> io::Result<()> {
       if N == 0 { return Ok(()); }
 
@@ -237,15 +274,16 @@ impl KeyLayoutWriter<'_> {
             self.line(x, y, x + KEY_WIDTH, y)?;
          }
 
-         self.text(x + 4, y + 16, keys[i])?;
+         let key = keys[i];
+         self.text(x + 4, y + 16, key.class(), key.text())?;
       }
 
       Ok(())
    }
 
-   fn alphanumeric<'a>(
+   fn alphanumeric(
       &mut self,
-      keys: [[&'a str; ALPHANUMERIC_COL_COUNT]; ALPHANUMERIC_ROW_COUNT],
+      keys: [[Key; ALPHANUMERIC_COL_COUNT]; ALPHANUMERIC_ROW_COUNT],
       stagger_rate: [f64; ALPHANUMERIC_COL_COUNT],
       left_top: (usize, usize)
    ) -> io::Result<()> {
@@ -260,17 +298,17 @@ impl KeyLayoutWriter<'_> {
       Ok(())
    }
 
-   fn left_alphanumeric<'a>(
+   fn left_alphanumeric(
       &mut self,
-      keys: [[&'a str; ALPHANUMERIC_COL_COUNT]; ALPHANUMERIC_ROW_COUNT]
+      keys: [[Key; ALPHANUMERIC_COL_COUNT]; ALPHANUMERIC_ROW_COUNT]
    ) -> io::Result<()> {
       self.alphanumeric(keys, ALPHANUMERIC_STAGGER_RATE, (10, 10))?;
       Ok(())
    }
 
-   fn right_alphanumeric<'a>(
+   fn right_alphanumeric(
       &mut self,
-      keys: [[&'a str; ALPHANUMERIC_COL_COUNT]; ALPHANUMERIC_ROW_COUNT]
+      keys: [[Key; ALPHANUMERIC_COL_COUNT]; ALPHANUMERIC_ROW_COUNT]
    ) -> io::Result<()> {
       let x = CANVAS_WIDTH - ALPHANUMERIC_COL_COUNT * KEY_WIDTH;
       let mut reversed_stagger_rate = ALPHANUMERIC_STAGGER_RATE;
@@ -279,9 +317,9 @@ impl KeyLayoutWriter<'_> {
       Ok(())
    }
 
-   fn thumb<'a>(
+   fn thumb(
       &mut self,
-      keys: [&'a str; THUMB_KEY_COUNT],
+      keys: [Key; THUMB_KEY_COUNT],
       key_widths: [f64; THUMB_KEY_COUNT],
       arc_center: (usize, usize),
       arc_radius: f64,
@@ -358,7 +396,7 @@ impl KeyLayoutWriter<'_> {
 
             let (x, y) = point(outer_radius - 16.0, arc + 4.0);
             let angle = angle(arc + width / 2.0) + PI / 2.0;
-            self.rotated_text(x, y, angle, key)?;
+            self.rotated_text(x, y, angle, key.class(), key.text())?;
 
             Ok(())
          })
@@ -367,9 +405,9 @@ impl KeyLayoutWriter<'_> {
       Ok(())
    }
 
-   fn left_thumb<'a>(
+   fn left_thumb(
       &mut self,
-      keys: [&'a str; THUMB_KEY_COUNT]
+      keys: [Key; THUMB_KEY_COUNT]
    ) -> io::Result<()> {
       let center = (
          (4.8 * KEY_WIDTH  as f64) as usize,
@@ -382,9 +420,9 @@ impl KeyLayoutWriter<'_> {
       Ok(())
    }
 
-   fn right_thumb<'a>(
+   fn right_thumb(
       &mut self,
-      keys: [&'a str; THUMB_KEY_COUNT]
+      keys: [Key; THUMB_KEY_COUNT]
    ) -> io::Result<()> {
       let mut reversed_thumb_key_width = THUMB_KEY_WIDTH;
       reversed_thumb_key_width.reverse();
