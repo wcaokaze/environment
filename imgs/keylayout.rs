@@ -22,7 +22,7 @@ const THUMB_KEY_WIDTH: [f64; THUMB_KEY_COUNT] = [1.0, 1.0, 1.25, 1.0];
 fn main() -> io::Result<()> {
    let output = File::create("keylayout.svg")?;
    KeyLayoutWriter::write(output, |writer| {
-      use crate::Key::{Normal as N, Oneshot as O};
+      use crate::Key::{Normal as N, Oneshot as O, Hold as H};
 
       let left_alphanumeric_keys = [
          [N(  "Tab"), N("'"), N(","), N("."), N("P"), N("Y")],
@@ -30,7 +30,7 @@ fn main() -> io::Result<()> {
          [N("Shift"), O("Z"), N("Q"), N("J"), N("K"), N("X")]
       ];
 
-      let left_thumb_keys = [N("Alt"), N("_"), N("Space"), N("Backspace")];
+      let left_thumb_keys = [H("Alt"), N("_"), N("Space"), N("Backspace")];
 
       let right_alphanumeric_keys = [
          [N("F"), N("G"), N("C"), N("R"), N("L"), N("=")],
@@ -66,6 +66,7 @@ fn transpose<T: Copy, const X: usize, const Y: usize>(m: [[T; X]; Y]) -> [[T; Y]
 enum Key {
    Normal(&'static str),
    Oneshot(&'static str),
+   Hold(&'static str),
 }
 
 impl Key {
@@ -73,6 +74,7 @@ impl Key {
       match &self {
          Key::Normal(text) => text,
          Key::Oneshot(text) => text,
+         Key::Hold(text) => text,
       }
    }
 
@@ -80,6 +82,7 @@ impl Key {
       match &self {
          Key::Normal(_) => None,
          Key::Oneshot(_) => Some("oneshot"),
+         Key::Hold(_) => Some("hold"),
       }
    }
 }
@@ -135,6 +138,10 @@ impl KeyLayoutWriter<'_> {
                })?;
                writer.append_style(".oneshot", |writer| {
                   writer.append_prop("fill", "dodgerblue")?;
+                  Ok(())
+               })?;
+               writer.append_style(".hold", |writer| {
+                  writer.append_prop("fill", "green")?;
                   Ok(())
                })?;
                Ok(())

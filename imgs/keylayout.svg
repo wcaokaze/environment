@@ -19,6 +19,9 @@
       .oneshot {
          fill: dodgerblue;
       }
+      .hold {
+         fill: green;
+      }
    </style>
    <rect width="900" height="340" style="fill: white;"/>
    <rect x="10" y="60" width="50" height="150"/>
@@ -58,7 +61,7 @@
    <line x1="260" y1="125" x2="310" y2="125"/>
    <text x="264" y="141">X</text>
    <path d="M 188 196 A 200 200 0 0 1 422 309 L 377 329 A 150 150 0 0 0 201 245 Z"/>
-   <text x="197" y="211" transform="rotate(-5.45 197 211)">Alt</text>
+   <text x="197" y="211" transform="rotate(-5.45 197 211)" class="hold">Alt</text>
    <line x1="254" y1="190" x2="250" y2="240"/>
    <text x="258" y="206" transform="rotate(13.65 258 206)">_</text>
    <line x1="318" y1="206" x2="299" y2="252"/>
