@@ -1,5 +1,7 @@
 #!/usr/bin/env -S cargo +nightly -Zscript
 
+#![feature(generic_const_exprs)]
+
 use std::fs::File;
 use std::io::{self, BufWriter};
 use std::mem::MaybeUninit;
@@ -22,23 +24,54 @@ const THUMB_KEY_WIDTH: [f64; THUMB_KEY_COUNT] = [1.0, 1.0, 1.25, 1.0];
 fn main() -> io::Result<()> {
    let output = File::create("keylayout.svg")?;
    KeyLayoutWriter::write(output, |writer| {
-      use crate::Key::{Normal as N, Oneshot as O, Hold as H};
+      let x = None;
+      let n = |text| Some(Key::Normal(text));
+      let o = |text| Some(Key::Oneshot(text));
+      let h = |text| Some(Key::Hold(text));
 
-      let left_alphanumeric_keys = [
-         [N(  "Tab"), N("'"), N(","), N("."), N("P"), N("Y")],
-         [N( "Ctrl"), N("A"), N("O"), N("E"), N("U"), N("I")],
-         [N("Shift"), O("Z"), N("Q"), N("J"), N("K"), N("X")]
-      ];
+      fn zip_keys<const C: usize, const R: usize>(
+         keys: [[Option<Key>; C]; R * 2]
+      ) -> [[(Option<Key>, Option<Key>); C]; R] {
+         keys.chunks(2)
+            .map(|row_pair| {
+               let [primary_key, secondary_key] = row_pair else { panic!(); };
 
-      let left_thumb_keys = [H("Alt"), N("_"), N("Space"), N("Backspace")];
+               primary_key.iter().zip(secondary_key.iter())
+                  .map(|(&p, &s)| (p, s))
+                  .collect::<Vec<_>>()
+                  .try_into().unwrap()
+            })
+            .collect::<Vec<_>>()
+            .try_into().unwrap()
+      }
 
-      let right_alphanumeric_keys = [
-         [N("F"), N("G"), N("C"), N("R"), N("L"), N("=")],
-         [N("D"), N("H"), N("T"), N("N"), N("S"), N("[")],
-         [N("B"), N("M"), N("W"), N("V"), N(";"), N("-")]
-      ];
+      let left_alphanumeric_keys = zip_keys([
+         [n("Tab")  , n("'")    , n(","), n("."), n("P"), n("Y")],
+         [x         , x         , x     , x     , x     , x     ],
+         [n("Ctrl") , n("A")    , n("O"), n("E"), n("U"), n("I")],
+         [x         , x         , x     , x     , x     , x     ],
+         [n("Shift"), o("Z")    , n("Q"), n("J"), n("K"), n("X")],
+         [x         , h("Shift"), x     , x     , x     , x     ]
+      ]);
 
-      let right_thumb_keys = [O("Ctrl+["), O("Enter"), O("F13"), N("Super")];
+      let left_thumb_keys = zip_keys([
+         [o("Esc"), n("_"), n("Space"), n("Backspace")],
+         [h("Alt"), x     , h("記号L"), x             ]
+      ]);
+
+      let right_alphanumeric_keys = zip_keys([
+         [n("F"), n("G"), n("C"), n("R"), n("L"), n("=")],
+         [x     , x     , x     , x     , x     , x     ],
+         [n("D"), n("H"), n("T"), n("N"), n("S"), n("[")],
+         [x     , x     , x     , x     , x     , x     ],
+         [n("B"), n("M"), n("W"), n("V"), n(";"), n("-")],
+         [x     , x     , x     , x     , x     , x     ]
+      ]);
+
+      let right_thumb_keys = zip_keys([
+         [o("Ctrl+["), o("Enter"), o("F13"), n("Super")],
+         [h("Shift") , h("数字L"), h("fnL"), x         ]
+      ]);
 
       writer.left_alphanumeric(left_alphanumeric_keys)?;
       writer.left_thumb(left_thumb_keys)?;
@@ -62,7 +95,7 @@ fn transpose<T: Copy, const X: usize, const Y: usize>(m: [[T; X]; Y]) -> [[T; Y]
    unsafe { transposed.map(|row| row.map(|t| t.assume_init())) }
 }
 
-#[derive(Copy, Clone)]
+#[derive(Copy, Clone, Debug)]
 enum Key {
    Normal(&'static str),
    Oneshot(&'static str),
@@ -268,7 +301,7 @@ impl KeyLayoutWriter<'_> {
       &mut self,
       x: usize,
       y: usize,
-      keys: &[Key; N]
+      keys: &[(Option<Key>, Option<Key>); N]
    ) -> io::Result<()> {
       if N == 0 { return Ok(()); }
 
@@ -281,8 +314,13 @@ impl KeyLayoutWriter<'_> {
             self.line(x, y, x + KEY_WIDTH, y)?;
          }
 
-         let key = keys[i];
-         self.text(x + 4, y + 16, key.class(), key.text())?;
+         let (primary_key, secondary_key) = keys[i];
+         if let Some(key) = primary_key {
+            self.text(x + 4, y + 16, key.class(), key.text())?;
+         }
+         if let Some(key) = secondary_key {
+            self.text(x + 4, y + 32, key.class(), key.text())?;
+         }
       }
 
       Ok(())
@@ -290,7 +328,7 @@ impl KeyLayoutWriter<'_> {
 
    fn alphanumeric(
       &mut self,
-      keys: [[Key; ALPHANUMERIC_COL_COUNT]; ALPHANUMERIC_ROW_COUNT],
+      keys: [[(Option<Key>, Option<Key>); ALPHANUMERIC_COL_COUNT]; ALPHANUMERIC_ROW_COUNT],
       stagger_rate: [f64; ALPHANUMERIC_COL_COUNT],
       left_top: (usize, usize)
    ) -> io::Result<()> {
@@ -307,7 +345,7 @@ impl KeyLayoutWriter<'_> {
 
    fn left_alphanumeric(
       &mut self,
-      keys: [[Key; ALPHANUMERIC_COL_COUNT]; ALPHANUMERIC_ROW_COUNT]
+      keys: [[(Option<Key>, Option<Key>); ALPHANUMERIC_COL_COUNT]; ALPHANUMERIC_ROW_COUNT]
    ) -> io::Result<()> {
       self.alphanumeric(keys, ALPHANUMERIC_STAGGER_RATE, (10, 10))?;
       Ok(())
@@ -315,7 +353,7 @@ impl KeyLayoutWriter<'_> {
 
    fn right_alphanumeric(
       &mut self,
-      keys: [[Key; ALPHANUMERIC_COL_COUNT]; ALPHANUMERIC_ROW_COUNT]
+      keys: [[(Option<Key>, Option<Key>); ALPHANUMERIC_COL_COUNT]; ALPHANUMERIC_ROW_COUNT]
    ) -> io::Result<()> {
       let x = CANVAS_WIDTH - ALPHANUMERIC_COL_COUNT * KEY_WIDTH;
       let mut reversed_stagger_rate = ALPHANUMERIC_STAGGER_RATE;
@@ -326,7 +364,7 @@ impl KeyLayoutWriter<'_> {
 
    fn thumb(
       &mut self,
-      keys: [Key; THUMB_KEY_COUNT],
+      keys: [(Option<Key>, Option<Key>); THUMB_KEY_COUNT],
       key_widths: [f64; THUMB_KEY_COUNT],
       arc_center: (usize, usize),
       arc_radius: f64,
@@ -393,7 +431,7 @@ impl KeyLayoutWriter<'_> {
          .zip(arcs)
          .zip(key_widths)
          .enumerate()
-         .map(|(i, ((key, arc), width))| {
+         .map(|(i, (((primary_key, secondary_key), arc), width))| {
             let (x1, y1) = point(outer_radius, arc);
             let (x2, y2) = point(inner_radius, arc);
 
@@ -401,9 +439,15 @@ impl KeyLayoutWriter<'_> {
                self.line(x1, y1, x2, y2)?;
             }
 
-            let (x, y) = point(outer_radius - 16.0, arc + 4.0);
-            let angle = angle(arc + width / 2.0) + PI / 2.0;
-            self.rotated_text(x, y, angle, key.class(), key.text())?;
+            let angle = angle(arc + width / 3.0) + PI / 2.0;
+            if let Some(key) = primary_key {
+               let (x, y) = point(outer_radius - 16.0, arc + 4.0);
+               self.rotated_text(x, y, angle, key.class(), key.text())?;
+            }
+            if let Some(key) = secondary_key {
+               let (x, y) = point(outer_radius - 32.0, arc + 4.0);
+               self.rotated_text(x, y, angle, key.class(), key.text())?;
+            }
 
             Ok(())
          })
@@ -414,7 +458,7 @@ impl KeyLayoutWriter<'_> {
 
    fn left_thumb(
       &mut self,
-      keys: [Key; THUMB_KEY_COUNT]
+      keys: [[(Option<Key>, Option<Key>); THUMB_KEY_COUNT]; 1]
    ) -> io::Result<()> {
       let center = (
          (4.8 * KEY_WIDTH  as f64) as usize,
@@ -423,13 +467,13 @@ impl KeyLayoutWriter<'_> {
       let start_angle = f64::to_radians(-90.0 - 15.0);
       let arc_radius = 4.0 * KEY_WIDTH as f64;
 
-      self.thumb(keys, THUMB_KEY_WIDTH, center, arc_radius, start_angle)?;
+      self.thumb(keys[0], THUMB_KEY_WIDTH, center, arc_radius, start_angle)?;
       Ok(())
    }
 
    fn right_thumb(
       &mut self,
-      keys: [Key; THUMB_KEY_COUNT]
+      keys: [[(Option<Key>, Option<Key>); THUMB_KEY_COUNT]; 1]
    ) -> io::Result<()> {
       let mut reversed_thumb_key_width = THUMB_KEY_WIDTH;
       reversed_thumb_key_width.reverse();
@@ -444,7 +488,7 @@ impl KeyLayoutWriter<'_> {
       let arc_angle = arc_length / (arc_radius - KEY_HEIGHT as f64);
       let start_angle = f64::to_radians(-90.0 + 15.0) - arc_angle;
 
-      self.thumb(keys, reversed_thumb_key_width, center, arc_radius, start_angle)?;
+      self.thumb(keys[0], reversed_thumb_key_width, center, arc_radius, start_angle)?;
       Ok(())
    }
 }
