@@ -1,12 +1,10 @@
-#!/usr/bin/env -S cargo +nightly -Zscript
-
-#![feature(generic_const_exprs)]
-
 use std::fs::File;
 use std::io::{self, BufWriter};
+use std::path::Path;
 use std::mem::MaybeUninit;
-use crate::svg_writer::SvgWriter;
+use crate::keylayout_writer::svg_writer::SvgWriter;
 
+pub mod prelude;
 mod svg_writer;
 
 const ALPHANUMERIC_COL_COUNT: usize = 6;
@@ -23,66 +21,60 @@ const ALPHANUMERIC_STAGGER_RATE: [f64; ALPHANUMERIC_COL_COUNT]
    = [1.0, 0.8, 0.3, 0.0, 0.2, 0.3];
 const THUMB_KEY_WIDTH: [f64; THUMB_KEY_COUNT] = [1.0, 1.0, 1.25, 1.0];
 
-fn main() -> io::Result<()> {
-   let output = File::create("keylayout.svg")?;
+pub fn generate_keylayout(
+   output_path: impl AsRef<Path>,
+   left_alphanumeric_keys: [[Option<Key>; ALPHANUMERIC_COL_COUNT]; ALPHANUMERIC_ROW_COUNT * 2],
+   left_thumb_keys: [[Option<Key>; THUMB_KEY_COUNT]; 2],
+   right_alphanumeric_keys: [[Option<Key>; ALPHANUMERIC_COL_COUNT]; ALPHANUMERIC_ROW_COUNT * 2],
+   right_thumb_keys: [[Option<Key>; THUMB_KEY_COUNT]; 2]
+) -> io::Result<()> {
+   let output = File::create(output_path)?;
    KeyLayoutWriter::write(output, |writer| {
-      let x = None;
-      let n = |text| Some(Key::Normal(text));
-      let o = |text| Some(Key::Oneshot(text));
-      let h = |text| Some(Key::Hold(text));
-
-      fn zip_keys<const C: usize, const R: usize>(
-         keys: [[Option<Key>; C]; R * 2]
-      ) -> [[(Option<Key>, Option<Key>); C]; R] {
-         keys.chunks(2)
-            .map(|row_pair| {
-               let [primary_key, secondary_key] = row_pair else { panic!(); };
-
-               primary_key.iter().zip(secondary_key.iter())
-                  .map(|(&p, &s)| (p, s))
-                  .collect::<Vec<_>>()
-                  .try_into().unwrap()
-            })
-            .collect::<Vec<_>>()
-            .try_into().unwrap()
-      }
-
-      let left_alphanumeric_keys = zip_keys([
-         [n("Tab")  , n("'")    , n(","), n("."), n("P"), n("Y")],
-         [x         , x         , x     , x     , x     , x     ],
-         [n("Ctrl") , n("A")    , n("O"), n("E"), n("U"), n("I")],
-         [x         , x         , x     , x     , x     , x     ],
-         [n("Shift"), o("Z")    , n("Q"), n("J"), n("K"), n("X")],
-         [x         , h("Shift"), x     , x     , x     , x     ]
-      ]);
-
-      let left_thumb_keys = zip_keys([
-         [o("Esc"), n("_"), n("Space"), n("Backspace")],
-         [h("Alt"), x     , h("記号L"), x             ]
-      ]);
-
-      let right_alphanumeric_keys = zip_keys([
-         [n("F"), n("G"), n("C"), n("R"), n("L"), n("=")],
-         [x     , x     , x     , x     , x     , x     ],
-         [n("D"), n("H"), n("T"), n("N"), n("S"), n("[")],
-         [x     , x     , x     , x     , x     , x     ],
-         [n("B"), n("M"), n("W"), n("V"), n(";"), n("-")],
-         [x     , x     , x     , x     , x     , x     ]
-      ]);
-
-      let right_thumb_keys = zip_keys([
-         [o("Ctrl+["), o("Enter"), o("F13"), n("Super")],
-         [h("Shift") , h("数字L"), h("fnL"), x         ]
-      ]);
+      let left_alphanumeric_keys = zip_keys(left_alphanumeric_keys);
+      let left_thumb_keys = zip_keys(left_thumb_keys);
+      let right_alphanumeric_keys = zip_keys(right_alphanumeric_keys);
+      let right_thumb_keys = zip_keys(right_thumb_keys);
 
       writer.left_alphanumeric(left_alphanumeric_keys)?;
       writer.left_thumb(left_thumb_keys)?;
       writer.right_alphanumeric(right_alphanumeric_keys)?;
       writer.right_thumb(right_thumb_keys)?;
+
       Ok(())
    })?;
 
    Ok(())
+}
+
+pub const X: Option<Key> = None;
+
+pub fn n(text: &'static str) -> Option<Key> {
+   Some(Key::Normal(text))
+}
+
+pub fn o(text: &'static str) -> Option<Key> {
+   Some(Key::Oneshot(text))
+}
+
+
+pub fn h(text: &'static str) -> Option<Key> {
+   Some(Key::Hold(text))
+}
+
+fn zip_keys<const C: usize, const R: usize>(
+   keys: [[Option<Key>; C]; R * 2]
+) -> [[(Option<Key>, Option<Key>); C]; R] {
+   keys.chunks(2)
+      .map(|row_pair| {
+         let [primary_key, secondary_key] = row_pair else { panic!(); };
+
+         primary_key.iter().zip(secondary_key.iter())
+            .map(|(&p, &s)| (p, s))
+            .collect::<Vec<_>>()
+            .try_into().unwrap()
+      })
+      .collect::<Vec<_>>()
+      .try_into().unwrap()
 }
 
 fn transpose<T: Copy, const X: usize, const Y: usize>(m: [[T; X]; Y]) -> [[T; Y]; X] {
@@ -98,7 +90,7 @@ fn transpose<T: Copy, const X: usize, const Y: usize>(m: [[T; X]; Y]) -> [[T; Y]
 }
 
 #[derive(Copy, Clone, Debug)]
-enum Key {
+pub enum Key {
    Normal(&'static str),
    Oneshot(&'static str),
    Hold(&'static str),
