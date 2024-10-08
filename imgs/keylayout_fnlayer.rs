@@ -30,7 +30,7 @@ fn main() -> io::Result<()> {
                  [X      , X        , X       , X      , X       , X       ]
       ],
       [
-         [X     , h("テンキーL"), h("fnL"), X],
+         [X     , t("テンキーL"), h("fnL"), X],
          [X     , X             , X       , X]
       ]
    )
