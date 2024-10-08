@@ -56,9 +56,12 @@ pub fn o(text: &'static str) -> Option<Key> {
    Some(Key::Oneshot(text))
 }
 
-
 pub fn h(text: &'static str) -> Option<Key> {
    Some(Key::Hold(text))
+}
+
+pub fn t(text: &'static str) -> Option<Key> {
+   Some(Key::Toggle(text))
 }
 
 fn zip_keys<const C: usize, const R: usize>(
@@ -94,6 +97,7 @@ pub enum Key {
    Normal(&'static str),
    Oneshot(&'static str),
    Hold(&'static str),
+   Toggle(&'static str),
 }
 
 impl Key {
@@ -102,6 +106,7 @@ impl Key {
          Key::Normal(text) => text,
          Key::Oneshot(text) => text,
          Key::Hold(text) => text,
+         Key::Toggle(text) => text,
       }
    }
 
@@ -110,6 +115,7 @@ impl Key {
          Key::Normal(_) => None,
          Key::Oneshot(_) => Some("oneshot"),
          Key::Hold(_) => Some("hold"),
+         Key::Toggle(_) => Some("toggle"),
       }
    }
 }
@@ -169,6 +175,10 @@ impl KeyLayoutWriter<'_> {
                })?;
                writer.append_style(".hold", |writer| {
                   writer.append_prop("fill", "green")?;
+                  Ok(())
+               })?;
+               writer.append_style(".toggle", |writer| {
+                  writer.append_prop("fill", "red")?;
                   Ok(())
                })?;
                Ok(())
