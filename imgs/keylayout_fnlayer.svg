@@ -22,7 +22,7 @@
       .hold {
          fill: green;
       }
-      .hold {
+      .toggle {
          fill: red;
       }
    </style>
