@@ -77,3 +77,19 @@
 |----------------|--------------------|------------|
 | メイン端末     | Pixel 6 Pro        | Android 12 |
 | デバッグ用端末 | LAVIE Tab E 10FHD2 | Android 10 |
+
+
+### キー配列
+![通常](https://raw.githubusercontent.com/wcaokaze/environment/master/imgs/keylayout.svg)
+
+#### 数字レイヤー
+![数字レイヤー](https://raw.githubusercontent.com/wcaokaze/environment/master/imgs/keylayout_numlayer.svg)
+
+#### 記号レイヤー
+![記号レイヤー](https://raw.githubusercontent.com/wcaokaze/environment/master/imgs/keylayout_symbollayer.svg)
+
+#### fnレイヤー
+![fnレイヤー](https://raw.githubusercontent.com/wcaokaze/environment/master/imgs/keylayout_fnlayer.svg)
+
+#### テンキーレイヤー
+![テンキーレイヤー](https://raw.githubusercontent.com/wcaokaze/environment/master/imgs/keylayout_numkeypadlayer.svg)

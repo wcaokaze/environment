@@ -1,0 +1,128 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="500" viewBox="0 0 900 340">
+   <style>
+      rect {
+         fill: transparent;
+         stroke: black;
+      }
+      line {
+         fill: transparent;
+         stroke: black;
+      }
+      path {
+         fill: transparent;
+         stroke: black;
+      }
+      text {
+         font-size: 12px;
+         fill: black;
+      }
+      .oneshot {
+         fill: dodgerblue;
+      }
+      .hold {
+         fill: green;
+      }
+      .toggle {
+         fill: red;
+      }
+   </style>
+   <rect width="900" height="420" style="fill: white;"/>
+   <text x="10" y="21">■ 通常キー</text>
+   <text x="10" y="37" class="oneshot">■ 単押しのみ。長押し無効</text>
+   <text x="10" y="53" class="hold">■ 長押し、もしくは同時押しで有効化</text>
+   <text x="10" y="69" class="toggle">■ トグル。押すたびに有効/無効が切り替わる</text>
+   <rect x="10" y="140" width="50" height="150"/>
+   <text x="14" y="156">Tab</text>
+   <line x1="10" y1="190" x2="60" y2="190"/>
+   <text x="14" y="206">Ctrl</text>
+   <line x1="10" y1="240" x2="60" y2="240"/>
+   <text x="14" y="256">Shift</text>
+   <rect x="60" y="130" width="50" height="150"/>
+   <text x="64" y="146">'</text>
+   <line x1="60" y1="180" x2="110" y2="180"/>
+   <text x="64" y="196">A</text>
+   <line x1="60" y1="230" x2="110" y2="230"/>
+   <text x="64" y="246" class="oneshot">Z</text>
+   <text x="64" y="262" class="hold">Shift</text>
+   <rect x="110" y="105" width="50" height="150"/>
+   <text x="114" y="121">,</text>
+   <line x1="110" y1="155" x2="160" y2="155"/>
+   <text x="114" y="171">O</text>
+   <line x1="110" y1="205" x2="160" y2="205"/>
+   <text x="114" y="221">Q</text>
+   <rect x="160" y="90" width="50" height="150"/>
+   <text x="164" y="106">.</text>
+   <line x1="160" y1="140" x2="210" y2="140"/>
+   <text x="164" y="156">E</text>
+   <line x1="160" y1="190" x2="210" y2="190"/>
+   <text x="164" y="206">J</text>
+   <rect x="210" y="100" width="50" height="150"/>
+   <text x="214" y="116">P</text>
+   <line x1="210" y1="150" x2="260" y2="150"/>
+   <text x="214" y="166">U</text>
+   <line x1="210" y1="200" x2="260" y2="200"/>
+   <text x="214" y="216">K</text>
+   <rect x="260" y="105" width="50" height="150"/>
+   <text x="264" y="121">Y</text>
+   <line x1="260" y1="155" x2="310" y2="155"/>
+   <text x="264" y="171">I</text>
+   <line x1="260" y1="205" x2="310" y2="205"/>
+   <text x="264" y="221">X</text>
+   <path d="M 188 276 A 200 200 0 0 1 422 389 L 377 409 A 150 150 0 0 0 201 325 Z"/>
+   <text x="197" y="291" transform="rotate(-8.63 197 291)" class="oneshot">Esc</text>
+   <text x="200" y="306" transform="rotate(-8.63 200 306)" class="hold">Alt</text>
+   <line x1="254" y1="270" x2="250" y2="320"/>
+   <text x="258" y="286" transform="rotate(10.46 258 286)">_</text>
+   <line x1="318" y1="286" x2="299" y2="332"/>
+   <text x="316" y="302" transform="rotate(31.15 316 302)">Space</text>
+   <text x="310" y="317" transform="rotate(31.15 310 317)" class="hold">記号L</text>
+   <line x1="386" y1="333" x2="349" y2="367"/>
+   <text x="378" y="348" transform="rotate(53.44 378 348)">Backspace</text>
+   <rect x="590" y="105" width="50" height="150"/>
+   <text x="594" y="121">F</text>
+   <line x1="590" y1="155" x2="640" y2="155"/>
+   <text x="594" y="171">D</text>
+   <line x1="590" y1="205" x2="640" y2="205"/>
+   <text x="594" y="221">B</text>
+   <rect x="640" y="100" width="50" height="150"/>
+   <text x="644" y="116">G</text>
+   <line x1="640" y1="150" x2="690" y2="150"/>
+   <text x="644" y="166">H</text>
+   <line x1="640" y1="200" x2="690" y2="200"/>
+   <text x="644" y="216">M</text>
+   <rect x="690" y="90" width="50" height="150"/>
+   <text x="694" y="106">C</text>
+   <line x1="690" y1="140" x2="740" y2="140"/>
+   <text x="694" y="156">T</text>
+   <line x1="690" y1="190" x2="740" y2="190"/>
+   <text x="694" y="206">W</text>
+   <rect x="740" y="105" width="50" height="150"/>
+   <text x="744" y="121">R</text>
+   <line x1="740" y1="155" x2="790" y2="155"/>
+   <text x="744" y="171">N</text>
+   <line x1="740" y1="205" x2="790" y2="205"/>
+   <text x="744" y="221">V</text>
+   <rect x="790" y="130" width="50" height="150"/>
+   <text x="794" y="146">L</text>
+   <line x1="790" y1="180" x2="840" y2="180"/>
+   <text x="794" y="196">S</text>
+   <line x1="790" y1="230" x2="840" y2="230"/>
+   <text x="794" y="246">;</text>
+   <rect x="840" y="140" width="50" height="150"/>
+   <text x="844" y="156">=</text>
+   <line x1="840" y1="190" x2="890" y2="190"/>
+   <text x="844" y="206">[</text>
+   <line x1="840" y1="240" x2="890" y2="240"/>
+   <text x="844" y="256">-</text>
+   <path d="M 477 389 A 200 200 0 0 1 711 276 L 698 325 A 150 150 0 0 0 522 409 Z"/>
+   <text x="493" y="391" transform="rotate(-59.80 493 391)" class="oneshot">Ctrl+[</text>
+   <text x="508" y="398" transform="rotate(-59.80 508 398)" class="hold">Shift</text>
+   <line x1="513" y1="333" x2="550" y2="367"/>
+   <text x="528" y="341" transform="rotate(-39.11 528 341)" class="oneshot">Enter</text>
+   <text x="540" y="352" transform="rotate(-39.11 540 352)" class="hold">数字L</text>
+   <line x1="581" y1="286" x2="600" y2="332"/>
+   <text x="592" y="299" transform="rotate(-16.83 592 299)" class="oneshot">F13</text>
+   <text x="597" y="313" transform="rotate(-16.83 597 313)" class="hold">fnL</text>
+   <line x1="645" y1="270" x2="649" y2="320"/>
+   <text x="651" y="286" transform="rotate(2.27 651 286)">Super</text>
+</svg>
