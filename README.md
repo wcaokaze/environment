@@ -80,6 +80,10 @@
 
 
 ### キー配列
+Dvorakベースです
+
+参考: [理想のキーボードを実現するためのTips](https://qiita.com/wcaokaze/items/66a776d55a3bd9b05257)
+
 ![通常](https://raw.githubusercontent.com/wcaokaze/environment/master/imgs/keylayout.svg)
 
 #### 数字レイヤー
@@ -95,6 +99,10 @@
 ![テンキーレイヤー](https://raw.githubusercontent.com/wcaokaze/environment/master/imgs/keylayout_numkeypadlayer.svg)
 
 ### 日本語入力
+[JLOD配列](https://www.mikage.to/jlod/)ベースです
+
+ローマ字入力用IMEであればローマ字表を変更することで実現できます。  
+Mozc用設定ファイル → [mozc/romantable.txt](mozc/romantable.txt)
 
 #### 一打目
 ![一打目](https://raw.githubusercontent.com/wcaokaze/environment/master/imgs/keylayout_roman_first.svg)
