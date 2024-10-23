@@ -93,3 +93,17 @@
 
 #### テンキーレイヤー
 ![テンキーレイヤー](https://raw.githubusercontent.com/wcaokaze/environment/master/imgs/keylayout_numkeypadlayer.svg)
+
+### 日本語入力
+
+#### 一打目
+![一打目](https://raw.githubusercontent.com/wcaokaze/environment/master/imgs/keylayout_roman_first.svg)
+
+#### 二打目
+![二打目](https://raw.githubusercontent.com/wcaokaze/environment/master/imgs/keylayout_roman_second.svg)
+
+#### 省略打ち
+![省略打ち](https://raw.githubusercontent.com/wcaokaze/environment/master/imgs/keylayout_roman_omission.svg)
+
+#### 記号
+![記号](https://raw.githubusercontent.com/wcaokaze/environment/master/imgs/keylayout_roman_symbol.svg)
