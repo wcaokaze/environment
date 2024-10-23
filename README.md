@@ -100,6 +100,7 @@
 ![一打目](https://raw.githubusercontent.com/wcaokaze/environment/master/imgs/keylayout_roman_first.svg)
 
 #### 二打目
+※ 一打目を右手人差し指で打った場合のみ右人差し指と薬指の列が入れ替わります
 ![二打目](https://raw.githubusercontent.com/wcaokaze/environment/master/imgs/keylayout_roman_second.svg)
 
 #### 省略打ち
