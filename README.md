@@ -116,3 +116,6 @@ Mozc用設定ファイル → [mozc/romantable.txt](mozc/romantable.txt)
 
 #### 記号
 ![記号](https://raw.githubusercontent.com/wcaokaze/environment/master/imgs/keylayout_roman_symbol.svg)
+
+### Vim配列
+![Vim](https://raw.githubusercontent.com/wcaokaze/environment/master/imgs/keylayout_vim.svg)
