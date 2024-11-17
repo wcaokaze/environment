@@ -33,7 +33,7 @@
 ;htq	じょっ
 ;htu	じゅつ
 ;htx	じぃっ
-;hty	じぃく
+;hty	じぃき
 ;htz	じゃっ
 ;hu	じゅ
 ;hx	じぃん
@@ -60,7 +60,7 @@
 ;tq	ぞっ
 ;tu	ずつ
 ;tx	じっ
-;ty	じく
+;ty	じき
 ;tz	ざっ
 ;u	ず
 ;v	じゅく
@@ -94,7 +94,7 @@
 =tq	ぉっ
 =tu	っ
 =tx	ぃっ
-=ty	ぃく
+=ty	ぃき
 =tz	ぁっ
 =u	ぅ
 =v'	ゃい
@@ -121,7 +121,7 @@
 =vtq	ょっ
 =vtu	ゅつ
 =vtx	ぃっ
-=vty	ぃく
+=vty	ぃき
 =vtz	ゃっ
 =vu	ゅ
 =vx	ぃん
@@ -169,7 +169,7 @@ bntp	びゅく
 bntq	びょっ
 bntu	びゅつ
 bntx	びぃっ
-bnty	びぃく
+bnty	びぃき
 bntz	びゃっ
 bnu	びゅ
 bnx	びぃん
@@ -192,7 +192,7 @@ btp	ぶく
 btq	ぼっ
 btu	ぶつ
 btx	びっ
-bty	びく
+bty	びき
 btz	ばっ
 bu	ぶ
 bv	びゅう
@@ -231,7 +231,7 @@ chtp	きゅく
 chtq	きょっ
 chtu	きゅつ
 chtx	きぃっ
-chty	きぃく
+chty	きぃき
 chtz	きゃっ
 chu	きゅ
 chx	きぃん
@@ -265,7 +265,7 @@ cntp	くぅく
 cntq	くぉっ
 cntu	くぅつ
 cntx	くぃっ
-cnty	くぃく
+cnty	くぃき
 cntz	くぁっ
 cnu	くぅ
 cnx	くぃん
@@ -288,7 +288,7 @@ ctp	くく
 ctq	こっ
 ctu	くつ
 ctx	きっ
-cty	きく
+cty	きき
 ctz	かっ
 cu	く
 cv	きゅく
@@ -327,7 +327,7 @@ dhtp	でゅく
 dhtq	でょっ
 dhtu	でゅつ
 dhtx	でぃっ
-dhty	でぃく
+dhty	でぃき
 dhtz	でゃっ
 dhu	でゅ
 dhx	でぃん
@@ -361,7 +361,7 @@ dntp	ぢゅく
 dntq	ぢょっ
 dntu	ぢゅつ
 dntx	ぢぃっ
-dnty	ぢぃく
+dnty	ぢぃき
 dntz	ぢゃっ
 dnu	ぢゅ
 dnx	ぢぃん
@@ -395,7 +395,7 @@ dstp	どぅく
 dstq	どぉっ
 dstu	どぅつ
 dstx	どぃっ
-dsty	どぃく
+dsty	どぃき
 dstz	どぁっ
 dsu	どぅ
 dsx	どぃん
@@ -414,7 +414,7 @@ dtp	づく
 dtq	どっ
 dtu	づつ
 dtx	ぢっ
-dty	ぢく
+dty	ぢき
 dtz	だっ
 du	づ
 dv	ぢゅう
@@ -458,7 +458,7 @@ fntp	ぴゅく
 fntq	ぴょっ
 fntu	ぴゅつ
 fntx	ぴぃっ
-fnty	ぴぃく
+fnty	ぴぃき
 fntz	ぴゃっ
 fnu	ぴゅ
 fnx	ぴぃん
@@ -481,7 +481,7 @@ ftp	ぷく
 ftq	ぽっ
 ftu	ぷつ
 ftx	ぴっ
-fty	ぴく
+fty	ぴき
 ftz	ぱっ
 fu	ぷ
 fv	ぴゅう
@@ -520,7 +520,7 @@ ghtp	ぐぅく
 ghtq	ぐぉっ
 ghtu	ぐぅつ
 ghtx	ぐぃっ
-ghty	ぐぃく
+ghty	ぐぃき
 ghtz	ぐぁっ
 ghu	ぐぅ
 ghx	ぐぃん
@@ -554,7 +554,7 @@ gntp	ぎゅく
 gntq	ぎょっ
 gntu	ぎゅつ
 gntx	ぎぃっ
-gnty	ぎぃく
+gnty	ぎぃき
 gntz	ぎゃっ
 gnu	ぎゅ
 gnx	ぎぃん
@@ -577,7 +577,7 @@ gtp	ぐく
 gtq	ごっ
 gtu	ぐつ
 gtx	ぎっ
-gty	ぎく
+gty	ぎき
 gtz	がっ
 gu	ぐ
 gv	ぎゅう
@@ -616,7 +616,7 @@ hhtp	ふぅく
 hhtq	ふぉっ
 hhtu	ふぅつ
 hhtx	ふぃっ
-hhty	ふぃく
+hhty	ふぃき
 hhtz	ふぁっ
 hhu	ふぅ
 hhx	ふぃん
@@ -650,7 +650,7 @@ hntp	ひゅく
 hntq	ひょっ
 hntu	ひゅつ
 hntx	ひぃっ
-hnty	ひぃく
+hnty	ひぃき
 hntz	ひゃっ
 hnu	ひゅ
 hnx	ひぃん
@@ -673,7 +673,7 @@ htp	ふく
 htq	ほっ
 htu	ふつ
 htx	ひっ
-hty	ひく
+hty	ひき
 htz	はっ
 hu	ふ
 hv	ひゅう
@@ -719,7 +719,7 @@ mntp	みゅく
 mntq	みょっ
 mntu	みゅつ
 mntx	みぃっ
-mnty	みぃく
+mnty	みぃき
 mntz	みゃっ
 mnu	みゅ
 mnx	みぃん
@@ -742,7 +742,7 @@ mtp	むく
 mtq	もっ
 mtu	むつ
 mtx	みっ
-mty	みく
+mty	みき
 mtz	まっ
 mu	む
 mv	みゅう
@@ -781,7 +781,7 @@ nhtp	にゅく
 nhtq	にょっ
 nhtu	にゅつ
 nhtx	にぃっ
-nhty	にぃく
+nhty	にぃき
 nhtz	にゃっ
 nhu	にゅ
 nhx	にぃん
@@ -809,7 +809,7 @@ ntp	ぬく
 ntq	のっ
 ntu	ぬつ
 ntx	にっ
-nty	にく
+nty	にき
 ntz	なっ
 nu	ぬ
 nv	にゅく
@@ -851,7 +851,7 @@ rhtp	りゅく
 rhtq	りょっ
 rhtu	りゅつ
 rhtx	りぃっ
-rhty	りぃく
+rhty	りぃき
 rhtz	りゃっ
 rhu	りゅ
 rhx	りぃん
@@ -878,7 +878,7 @@ rtp	るく
 rtq	ろっ
 rtu	るつ
 rtx	りっ
-rty	りく
+rty	りき
 rtz	らっ
 ru	る
 rv	りゅく
@@ -917,7 +917,7 @@ shtp	しゅく
 shtq	しょっ
 shtu	しゅつ
 shtx	しぃっ
-shty	しぃく
+shty	しぃき
 shtz	しゃっ
 shu	しゅ
 shx	しぃん
@@ -944,7 +944,7 @@ stp	すく
 stq	そっ
 stu	すつ
 stx	しっ
-sty	しく
+sty	しき
 stz	さっ
 su	す
 sv	しゅく
@@ -983,7 +983,7 @@ thtp	ちゅく
 thtq	ちょっ
 thtu	ちゅつ
 thtx	ちぃっ
-thty	ちぃく
+thty	ちぃき
 thtz	ちゃっ
 thu	ちゅ
 thx	ちぃん
@@ -1017,7 +1017,7 @@ tntp	てゅく
 tntq	てょっ
 tntu	てゅつ
 tntx	てぃっ
-tnty	てぃく
+tnty	てぃき
 tntz	てゃっ
 tnu	てゅ
 tnx	てぃん
@@ -1051,7 +1051,7 @@ tstp	とぅく
 tstq	とぉっ
 tstu	とぅつ
 tstx	とぃっ
-tsty	とぃく
+tsty	とぃき
 tstz	とぁっ
 tsu	とぅ
 tsx	とぃん
@@ -1070,7 +1070,7 @@ ttp	つく
 ttq	とっ
 ttu	つつ
 ttx	ちっ
-tty	ちく
+tty	ちき
 ttz	たっ
 tu	つ
 tv	ちゅく
@@ -1103,7 +1103,7 @@ vtp	ゆく
 vtq	よっ
 vtu	ゆつ
 vtx	いっ
-vty	いく
+vty	いき
 vtz	やっ
 vu	ゆ
 vv'	ゔぁい
@@ -1130,7 +1130,7 @@ vvtp	ゔく
 vvtq	ゔぉっ
 vvtu	ゔつ
 vvtx	ゔぃっ
-vvty	ゔぃく
+vvty	ゔぃき
 vvtz	ゔぁっ
 vvu	ゔ
 vvx	ゔぃん
@@ -1168,7 +1168,7 @@ whtp	うく
 whtq	うぉっ
 whtu	うつ
 whtx	うぃっ
-whty	うぃく
+whty	うぃき
 whtz	うぁっ
 whu	う
 whx	うぃん
@@ -1193,7 +1193,7 @@ wtp	うく
 wtq	をっ
 wtu	うつ
 wtx	うぃっ
-wty	うぃく
+wty	うぃき
 wtz	わっ
 wu	う
 wx	うぃん
