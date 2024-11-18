@@ -114,6 +114,9 @@ Mozc用設定ファイル → [mozc/romantable.txt](mozc/romantable.txt)
 #### 省略打ち
 ![省略打ち](https://raw.githubusercontent.com/wcaokaze/environment/master/imgs/keylayout_roman_omission.svg)
 
+#### 定型文
+![定型文](https://raw.githubusercontent.com/wcaokaze/environment/master/imgs/keylayout_roman_template.svg)
+
 #### 記号
 ![記号](https://raw.githubusercontent.com/wcaokaze/environment/master/imgs/keylayout_roman_symbol.svg)
 
