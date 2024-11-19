@@ -10,12 +10,12 @@ mod keylayout_writer;
 fn main() -> io::Result<()> {
    generate_keylayout("keylayout_roman_template.svg",
       [
-         [X     , X     , X     , X     , X     , X      ],
-         [X     , X     , X     , X     , X     , X      ],
-         [X     , X     , X     , X     , X     , X      ],
-         [X     , X     , X     , X     , X     , X      ],
-         [X     , X     , X     , X     , X     , X      ],
-         [X     , X     , X     , X     , X     , X      ]
+         [X     , X     , X     , n("しました"), n("でした"), X      ],
+         [X     , X     , X     , X            , X          , X      ],
+         [X     , X     , X     , n("します")  , n("です")  , X      ],
+         [X     , X     , X     , X            , X          , X      ],
+         [X     , X     , X     , n("しまして"), n("でして"), X      ],
+         [X     , X     , X     , X            , X          , X      ]
       ], [
                                    [n("Esc"), n("_"), n("Space"), n("Backspace")],
                                    [X       , X     , X         , X             ]
