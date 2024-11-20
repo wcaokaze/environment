@@ -10,9 +10,9 @@ mod keylayout_writer;
 fn main() -> io::Result<()> {
    generate_keylayout("keylayout_roman_omission.svg",
       [
-         [n("Tab")  , n("-aく"), n("-oく"), n("-eき"), n("-uく"), n("-iく")],
+         [n("Tab")  , n("-aつ"), n("-oつ"), n("-eつ"), n("-uつ"), n("-iつ")],
          [X         , X        , X        , X        , X        , X        ],
-         [n("Ctrl") , n("-aつ"), n("-oつ"), n("-eつ"), n("-uつ"), n("-iつ")],
+         [n("Ctrl") , n("-aく"), n("-oく"), n("-eき"), n("-uく"), n("-iく")],
          [X         , X        , X        , X        , X        , X        ],
          [n("Shift"), n("-aっ"), n("-oっ"), n("-eっ"), n("-uっ"), n("-iっ")],
          [X         , X        , X        , X        , X        , X        ]
