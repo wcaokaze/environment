@@ -24,7 +24,7 @@ fn main() -> io::Result<()> {
       [
                     [X     , n("-yoう"), n("-yoつ"), n("-yoく"), X     , X     ],
                     [X     , X         , X         , X         , X     , X     ],
-                    [X     , n("-y-")  , n("省略") , X         , X     , X     ],
+                    [X     , n("-y-")  , n("省略") , n("-yaく"), X     , X     ],
                     [X     , X         , X         , X         , X     , X     ],
                     [X     , n("-yuう"), n("-yuつ"), n("-yuく"), X     , X     ],
                     [X     , X         , X         , X         , X     , X     ]

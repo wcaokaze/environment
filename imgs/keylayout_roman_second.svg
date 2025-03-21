@@ -89,6 +89,7 @@
    <rect x="740" y="25" width="50" height="150"/>
    <text x="744" y="41">-yoく</text>
    <line x1="740" y1="75" x2="790" y2="75"/>
+   <text x="744" y="91">-yaく</text>
    <line x1="740" y1="125" x2="790" y2="125"/>
    <text x="744" y="141">-yuく</text>
    <rect x="790" y="50" width="50" height="150"/>

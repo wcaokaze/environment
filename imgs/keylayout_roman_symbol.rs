@@ -10,12 +10,12 @@ mod keylayout_writer;
 fn main() -> io::Result<()> {
    generate_keylayout("keylayout_roman_symbol.svg",
       [
-         [n("Tab")  , X     , n("‥"), n("…"), n("〜"), X     ],
-         [X         , X     , X     , X     , X      , X     ],
-         [n("Ctrl") , X     , X     , X     , X      , X     ],
-         [X         , X     , X     , X     , X      , X     ],
-         [n("Shift"), X     , X     , X     , X      , X     ],
-         [X         , X     , X     , X     , X      , X     ]
+         [n("Tab")  , X     , n("‥"), n("…"), n("〜"), n("ん")],
+         [X         , X     , X     , X     , X      , X      ],
+         [n("Ctrl") , X     , X     , X     , X      , X      ],
+         [X         , X     , X     , X     , X      , X      ],
+         [n("Shift"), X     , X     , X     , X      , X      ],
+         [X         , X     , X     , X     , X      , X      ]
       ], [
                                 [n("Esc"), n("_"), n("Space"), n("Backspace")],
                                 [X       , X     , X         , X             ]
