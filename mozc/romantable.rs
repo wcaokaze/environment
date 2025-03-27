@@ -64,9 +64,9 @@ const SPECIAL_CHARS: [(&'static str, &'static str); 33] = [
    ("lu", "です"),
    ("lp", "でした"),
    ("lk", "でして"),
-   ("le", "します"),
-   ("l.", "しました"),
-   ("lj", "しまして"),
+   ("le", "ます"),
+   ("l.", "ました"),
+   ("lj", "まして"),
 ];
 
 fn main() -> io::Result<()> {
