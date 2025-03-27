@@ -691,13 +691,16 @@ hz	はん
 i	い
 j	えん
 k	うん
+l,	思う
 l.	ました
 lc	削除
 le	ます
 lh	確認
 lj	まして
 lk	でして
+lo	思い
 lp	でした
+lq	思っ
 lt	変更
 lu	です
 m'	まい
