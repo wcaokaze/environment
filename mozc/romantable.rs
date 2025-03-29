@@ -34,8 +34,8 @@ const BASIC_CHAR_TABLE: [(&'static str, [&'static str; 5]); 26] = [
 ];
 
 const SPECIAL_CHARS: [(&'static str, &'static str); 36] = [
-   ("yy",  "ん"),
-   ("'",   "っ"),
+   ("'",  "ん"),
+   ("_",   "っ"),
    ("=tu", "っ"),
    ("=wa", "ゎ"),
    ("=ca", "ヵ"),
