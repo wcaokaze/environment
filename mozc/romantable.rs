@@ -33,7 +33,7 @@ const BASIC_CHAR_TABLE: [(&'static str, [&'static str; 5]); 26] = [
    ("ds", ["どぁ", "どぃ", "どぅ", "どぇ", "どぉ"]),
 ];
 
-const SPECIAL_CHARS: [(&'static str, &'static str); 36] = [
+const SPECIAL_CHARS: [(&'static str, &'static str); 37] = [
    ("'",  "ん"),
    ("_",   "っ"),
    ("=tu", "っ"),
@@ -60,6 +60,7 @@ const SPECIAL_CHARS: [(&'static str, &'static str); 36] = [
    ("yn",  "→"),
    ("lh", "確認"),
    ("lt", "変更"),
+   ("lg", "必要"),
    ("lc", "削除"),
    ("lu", "です"),
    ("lp", "でした"),
